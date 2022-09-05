@@ -1,0 +1,146 @@
+.jumbotron{
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url(../images/footer-bg.jpg) no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../images/baru1.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 60vh;
+}
+.header {
+    position: fixed;
+    background: white;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem 9%;
+    z-index: 1000;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+.jumbotron h1 {
+    color: white;
+    font-size: 6rem;
+    font-weight: 700;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -200%);
+}
+/* best seliing section */
+.best-sell{
+    padding-top: 2rem;
+    padding: 0;
+    margin: 0;
+}
+.best-sell .box-container {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (minmax(20em, 1fr))[auto-fit];
+        grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 0.5rem;
+    padding:0 20px;
+  }
+  
+  .best-sell .box-container .box {
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .best-sell .heading {
+    color: #ff6d05 ;
+    font-weight: 700;
+    font-size: 2.7rem;
+  }
+  .best-sell .sub-heading {
+    font-weight: 600;
+    text-align: center;
+    font-size: 1.7rem;
+  }
+  
+  .best-sell .box-container .box img {
+    height: 15rem;
+    width: 15rem;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
+  
+  .best-sell .box-container .box h3 {
+    font-size: 2rem;
+    color: #219150;
+  }
+  
+  .best-sell .box-container .box p {
+    font-size: 1.5rem;
+    color: #10221b;
+    padding: 1rem 0;
+    line-height: 2;
+}
+.offer-img{
+    width: 60px !important;
+    height: 60px !important;
+}
+.h-offer{
+    color: black !important;
+    font-size: 17px !important;
+    font-weight: 600 !important;
+}
+.p-offer{
+    font-weight: 300;
+}
+
+.best-sell .box-container-pink {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (minmax(20em, 1fr))[auto-fit];
+        grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 2.5rem;
+    padding:0 40px 20px 40px;
+}
+.box-pink{
+  text-align: center;
+  
+  background: rgba(255,206,236,0.5);
+}
+.offer-img{
+  margin: 20px 20px 40px 20px;
+}
+.h-best{
+  color: #ff6d05;
+  font-size: 18px;
+  font-weight: 700;
+}
+.p-best{
+  margin: 20px 20px 40px 20px;
+  font-size: 15px;
+  font-weight: 300;
+}
+.kontak-image{
+  width: 50px !important;
+  height: 50px !important;
+}
+.p-kontak{
+  font-weight: 600;
+  font-size: 16px !important;
+  color: #ff6d05 !important;
+}
+.map{
+  padding: 10px;
+  margin-bottom: 5%;
+}
+.left{
+  float: left;
+  width: 50%;
+  height: 100%;
+}
+.right{
+  float: right;
+  background: yellow;
+  width: 50%;
+  height: 100%;
+}

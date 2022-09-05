@@ -48,3 +48,6 @@ Route::get('auth/google/callback',[GoogleController::class,'handleGoogleCallback
 
 // Mobil route
 Route::get('/cars',[MobilController::class, 'index']);
+
+//About us route
+Route::view('about','aboutUs.index');

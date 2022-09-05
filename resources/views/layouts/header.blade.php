@@ -30,7 +30,7 @@
        @if(Auth::user())
         <form action="{{ route('logout') }}" method="POST">
             @csrf
-            <button class="btn btn-light-primary font-weight-bold">Log Out</button>
+            <button>Log Out</button>
         </form>
        @else
        <a href="{{ url('login') }}" >Login</a>

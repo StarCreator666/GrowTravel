@@ -13,4 +13,3 @@ Route::view('admin/wisata/tambah','admin.wisata.tambah');
 Route::post('/add-post',[WisataController::class,'add_post'])->name('add.post');
 
 
-Route::view('about','aboutUs.index');
