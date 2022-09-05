@@ -1,0 +1,3 @@
+account google
+your client id = 233515282677-dq76bq5f0np1v34qqn1ag9t36hpef988.apps.googleusercontent.com
+your client secret = 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
