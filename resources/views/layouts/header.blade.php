@@ -15,19 +15,26 @@
 
 
         <div class="dropdown" ><a href="" id="navbarDropdown" class="nav-link dropdown-menutoggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img class="flag-icon" width="25rem" src="{{ __('icon/'.app()->getLocale().'.png') }}" alt="">
-        </a>
+            <img class="flag-icon" width="25rem" src="{{ __('icon/'.app()->getLocale().'.png') }}" alt=""></a>
 
 
-        <div class="dropdown-menu dropdown-menu-" aria-labelledby="navbarDropdown">
-            @if (app()->getLocale()=='id')
-            <a href="{{ url('lang/en') }}" class="dropdown-item" style="margin:0;"><img width="25rem" src="{{ __('icon/en.png') }}" alt=""> {{ __('english') }}</a>
-            @endif
-            @if (app()->getLocale()=='en')
-            <a href="{{ url('lang/id') }}" class="dropdown-item" style="margin:0;"><img width="25rem" src="{{ __('icon/id.png') }}" alt=""> {{ __('indonesian') }}</a>
-            @endif
-        </div>
-    </div>
+            <div class="dropdown-menu dropdown-menu-" aria-labelledby="navbarDropdown">
+                @if (app()->getLocale()=='id')
+                <a href="{{ url('lang/en') }}" class="dropdown-item" style="margin:0;"><img width="25rem" src="{{ __('icon/en.png') }}" alt=""> {{ __('english') }}</a>
+                @endif
+                @if (app()->getLocale()=='en')
+                <a href="{{ url('lang/id') }}" class="dropdown-item" style="margin:0;"><img width="25rem" src="{{ __('icon/id.png') }}" alt=""> {{ __('indonesian') }}</a>
+                @endif
+            </div>
+       </div>
+       @if(Auth::user())
+        <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button class="btn btn-light-primary font-weight-bold">Log Out</button>
+        </form>
+       @else
+       <a href="{{ url('login') }}" >Login</a>
+       @endif
     </nav>
 
     <div class="icons">
