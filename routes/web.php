@@ -38,3 +38,7 @@ Route::post('/add-mobil',[MobilController::class,'add_post'])->name('add.mobil')
 
 // Mobil route
 Route::get('/cars',[MobilController::class, 'index']);
+
+Route::get('auth/google',[App\Http\Controllers\GoogleController::class,'redirectToGoogle'])->name('google.login');
+Route::get('auth/google/callback',[App\Http\Controllers\GoogleController::class,'handleGoogleCallback'])->name('google.callback');
+Route::view('/login', 'login');
