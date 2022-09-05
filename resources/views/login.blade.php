@@ -101,7 +101,7 @@ License: You must have a valid license purchased only from themeforest(the above
 						<a href="javascript:;" id="kt_login_forgot" class="text-muted text-hover-primary">Forget password ?</a>
 					</div>
 					<button id="kt_login_signin_submit" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-4">SIGNIN</button>
-                    <div><a href="{{ route('google.login') }}" id="kt_login_signin_submit" style="width:100%;" class="btn btn-secondary font-weight-bold px-20 py-4 my-3 mx-0">Login With Google</a></div>
+                    <div><a href="{{ url('auth/google') }}" style="width:100%;" class="btn btn-secondary font-weight-bold px-20 py-4 my-3 mx-0">Login With Google</a></div>
 				</form>
 				<div class="mt-10">
 					<span class="opacity-70 mr-4">
