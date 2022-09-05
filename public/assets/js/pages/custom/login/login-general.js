@@ -1,5 +1,11 @@
 "use strict";
 
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
 // Class Definition
 var KTLogin = function() {
     var _login;
@@ -19,23 +25,51 @@ var KTLogin = function() {
 
     var _handleSignInForm = function() {
         var validation;
-
+		const form = document.getElementById('kt_login_signin_form');
         // Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
         validation = FormValidation.formValidation(
 			KTUtil.getById('kt_login_signin_form'),
 			{
+				data: {
+					type: 'remote',
+					source: HOST_URL + 'data-login'
+				},
 				fields: {
-					username: {
+					email: {
 						validators: {
 							notEmpty: {
-								message: 'Username is required'
-							}
+								message: 'Email is required'
+							},
+							callback: {
+								message: 'Email address is not found',
+								callback: function (input) {
+									const value = input.value;
+									if (value === '') {
+										return true;
+									}
+									return (
+										FormValidation.validators.emailAddress().validate({
+											value: value,
+										}).valid &&
+										FormValidation.validators.regexp().validate({
+											value: value,
+											options: {
+												regexp: '^[^@\\s]+@([^@\\s]+\\.)+[^@\\s]+$',
+											},
+										}).valid
+									);
+								},
+							},
 						}
 					},
 					password: {
 						validators: {
 							notEmpty: {
 								message: 'Password is required'
+							},
+							stringLength: {
+								min: 8,
+								message: 'Password must minimum 8'
 							}
 						}
 					}
@@ -51,26 +85,45 @@ var KTLogin = function() {
 
         $('#kt_login_signin_submit').on('click', function (e) {
             e.preventDefault();
-
+			var formData = {
+				email: $("#email").val(),
+				password: $("#password").val(),
+			}		
             validation.validate().then(function(status) {
-		        if (status == 'Valid') {
-                    swal.fire({
-		                text: "All is cool! Now you submit this form",
-		                icon: "success",
-		                buttonsStyling: false,
-		                confirmButtonText: "Ok, got it!",
-                        customClass: {
-    						confirmButton: "btn font-weight-bold btn-light-primary"
-    					}
-		            }).then(function() {
-						KTUtil.scrollTop();
+		        if(status == 'Valid'){
+					$.ajax({
+						url: "post-login",
+						type: "post",
+						data: formData,
+						dataType: 'json',
+						success: function(response){
+							if(response.success){
+								window.location.href = "/"
+							}else if(response.status){
+								// alert('berhasil')
+								window.location.href = "/admin"
+							}
+						},
+						error: function (){
+							swal.fire({
+								text: "Email or password is wrong, please check again.",
+								icon: "error",
+								buttonsStyling: false,
+								confirmButtonText: "Oke!",
+								customClass: {
+									confirmButton: "btn font-weight-bold btn-light-primary"
+								}
+							}).then(function() {
+								KTUtil.scrollTop();
+							});
+						}
 					});
 				} else {
 					swal.fire({
-		                text: "Sorry, looks like there are some errors detected, please try again.",
+		                text: "Data is invalid, please check again.",
 		                icon: "error",
 		                buttonsStyling: false,
-		                confirmButtonText: "Ok, got it!",
+		                confirmButtonText: "Oke!",
                         customClass: {
     						confirmButton: "btn font-weight-bold btn-light-primary"
     					}
@@ -103,7 +156,7 @@ var KTLogin = function() {
 			form,
 			{
 				fields: {
-					fullname: {
+					name: {
 						validators: {
 							notEmpty: {
 								message: 'Username is required'
@@ -115,16 +168,37 @@ var KTLogin = function() {
 							notEmpty: {
 								message: 'Email address is required'
 							},
-                            emailAddress: {
-								message: 'The value is not a valid email address'
-							}
+							callback: {
+                                    message: 'Email address not found',
+                                    callback: function (input) {
+                                        const value = input.value;
+                                        if (value === '') {
+                                            return true;
+                                        }
+                                        return (
+                                            FormValidation.validators.emailAddress().validate({
+                                                value: value,
+                                            }).valid &&
+                                            FormValidation.validators.regexp().validate({
+                                                value: value,
+                                                options: {
+                                                    regexp: '^[^@\\s]+@([^@\\s]+\\.)+[^@\\s]+$',
+                                                },
+                                            }).valid
+                                        );
+                                    },
+                                },
 						}
 					},
                     password: {
                         validators: {
                             notEmpty: {
                                 message: 'The password is required'
-                            }
+                            },
+							stringLength: {
+								min: 8,
+								message: 'Password must have 8'
+							}
                         }
                     },
                     cpassword: {
@@ -136,7 +210,7 @@ var KTLogin = function() {
                                 compare: function() {
                                     return form.querySelector('[name="password"]').value;
                                 },
-                                message: 'The password and its confirm are not the same'
+                                message: 'Confirm password not the same'
                             }
                         }
                     },
@@ -157,26 +231,51 @@ var KTLogin = function() {
 
         $('#kt_login_signup_submit').on('click', function (e) {
             e.preventDefault();
-
+			var formData = {
+				name: $("#name").val(),
+				email: $("#email_register").val(),
+				password: $("#password_register").val(),
+			}		
             validation.validate().then(function(status) {
 		        if (status == 'Valid') {
-                    swal.fire({
-		                text: "All is cool! Now you submit this form",
-		                icon: "success",
-		                buttonsStyling: false,
-		                confirmButtonText: "Ok, got it!",
-                        customClass: {
-    						confirmButton: "btn font-weight-bold btn-light-primary"
-    					}
-		            }).then(function() {
-						KTUtil.scrollTop();
+                    $.ajax({
+						url: "register",
+						type: "post",
+						data: formData,
+						dataType: 'json',
+						success: function(data){
+							swal.fire({
+								text: "Register success, please wait until you redirect login.",
+								icon: "success",
+								buttonsStyling: false,
+								timer: 2000,
+								confirmButtonText: "Ok, got it!",
+								customClass: {
+									confirmButton: "btn font-weight-bold btn-light-primary"
+								}
+							})
+							location.reload();
+						},
+						error: function(data){
+							swal.fire({
+								text: "Email address is duplicate, please change.",
+								icon: "error",
+								buttonsStyling: false,
+								confirmButtonText: "Oke!",
+								customClass: {
+									confirmButton: "btn font-weight-bold btn-light-primary"
+								}
+							}).then(function() {
+								KTUtil.scrollTop();
+							});
+						}
 					});
 				} else {
 					swal.fire({
-		                text: "Sorry, looks like there are some errors detected, please try again.",
+		                text: "Data is invalid, please check again.",
 		                icon: "error",
 		                buttonsStyling: false,
-		                confirmButtonText: "Ok, got it!",
+		                confirmButtonText: "Oke!",
                         customClass: {
     						confirmButton: "btn font-weight-bold btn-light-primary"
     					}
@@ -208,9 +307,26 @@ var KTLogin = function() {
 							notEmpty: {
 								message: 'Email address is required'
 							},
-                            emailAddress: {
-								message: 'The value is not a valid email address'
-							}
+                            callback: {
+								message: 'Alamat email tidak terdaftar dimanapun',
+								callback: function (input) {
+									const value = input.value;
+									if (value === '') {
+										return true;
+									}
+									return (
+										FormValidation.validators.emailAddress().validate({
+											value: value,
+										}).valid &&
+										FormValidation.validators.regexp().validate({
+											value: value,
+											options: {
+												regexp: '^[^@\\s]+@([^@\\s]+\\.)+[^@\\s]+$',
+											},
+										}).valid
+									);
+								},
+							},
 						}
 					}
 				},
@@ -224,11 +340,44 @@ var KTLogin = function() {
         // Handle submit button
         $('#kt_login_forgot_submit').on('click', function (e) {
             e.preventDefault();
-
+			var formData = {
+				email: $('#email_lupa').val(),
+				token: $('#token').val()
+			}
             validation.validate().then(function(status) {
 		        if (status == 'Valid') {
-                    // Submit form
-                    KTUtil.scrollTop();
+                    $.ajax({
+						url: "lupa-password",
+						type: "post",
+						data: formData,
+						dataType: 'json',
+						success: function(response){
+							swal.fire({
+								text: "Token telah dikirimkan ke alamat email.",
+								icon: "success",
+								buttonsStyling: false,
+								timer: 2000,
+								confirmButtonText: "Ok, got it!",
+								customClass: {
+									confirmButton: "btn font-weight-bold btn-light-primary"
+								}
+							})
+							window.location.href = "masuk-token"
+						},
+						error: function(){
+							swal.fire({
+								text: "Alamat email tidak ditemukan, silahkan ganti alamat email.",
+								icon: "error",
+								buttonsStyling: false,
+								confirmButtonText: "Oke!",
+								customClass: {
+									confirmButton: "btn font-weight-bold btn-light-primary"
+								}
+							}).then(function() {
+								KTUtil.scrollTop();
+							});
+						}
+					});
 				} else {
 					swal.fire({
 		                text: "Sorry, looks like there are some errors detected, please try again.",
