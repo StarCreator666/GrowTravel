@@ -31,122 +31,166 @@
     <div class="d-flex flex-column-fluid">
         <!--begin::Container-->
         <div class=" container ">
-            <div class="col-md-6">
-                <!--begin::Card-->
-                <div class="card card-custom gutter-b example example-compact">
-                    <div class="card-header">
-                        <h3 class="card-title">
-                            Tambah Wisata
-                        </h3>
+            <form action="{{ route('add.post') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="row">
+                    <div class="col-md-6">
+                        <!--begin::Card-->
+                        <div class="card card-custom gutter-b example example-compact">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    Tambah Wisata
+                                </h3>
+                            </div>
+                            <!--begin::Form-->
+                                <div class="card-body">
+                                    <div class="form-group mb-1">
+                                        <label for="image">Foto Wisata</label>
+                                        <input class="form-control" id="image" type="file" name="gambar" accept="image/*">
+                                        @error('gambar')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group mb-1">
+                                        <label>Lokasi Wisata</label>
+                                        <textarea name="lokasi" id="lokasi" class="form-control"></textarea>
+                                        @error('lokasi')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group mb-1">
+                                        <label>Destinasi Wisata</label>
+                                        <input type="text" class="form-control" name="judul" id="judul" placeholder="Wisata.."/>
+                                        @error('judul')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group mb-1">
+                                        <label>Deskripsi Wisata</label>
+                                        <textarea name="deskripsi" id="deskripsi" class="form-control"></textarea>
+                                            @error('deskripsi')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                    </div>
+                                    <div class="form-group mb-1">
+                                        <label for="exampleSelect1">Jadwal</label>
+                                        <select class="form-control" id="exampleSelect1">
+                                            <option>1 hari</option>
+                                            <option>2 hari</option>
+                                            <option>3 hari</option>
+                                            <option>4 hari</option>
+                                            <option>5 hari</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group mb-1">
+                                        <label for="harga awal">Mulai Harga</label>
+                                        <input type="number" class="form-control" name="harga_awal" id="harga_awal" placeholder="Rp."/>
+                                            @error('harga_awal')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                    </div>
+                                    <div class="form-group mb-1">
+                                        <label for="harga awal">Sampai Harga</label>
+                                        <input type="number" class="form-control" name="harga_akhir" id="harga_akhir" placeholder="Rp."/>
+                                        @error('harga_akhir')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group mb-1">
+                                        <label for="harga awal">Inclusion</label>
+                                        <div class="input-group control-group increment-inclusion" >
+                                        <textarea name="inclusion[]" id="" class="form-control"></textarea>
+                                            <div class="input-group-btn"> 
+                                            <button class="btn btn-success btn-inclusion" type="button"><i class="glyphicon glyphicon-plus"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="clone-inclusion hide" style="display: none">
+                                            <div class="control-group control-group-inclusion input-group" style="margin-top:10px">
+                                        <textarea name="inclusion[]" id="" class="form-control" placeholder="jj"></textarea>
+                                            <div class="input-group-btn"> 
+                                                <button class="btn btn-danger danger-inclusion" type="button"><i class="glyphicon glyphicon-remove"></i></button>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-1">
+                                        <label for="harga awal">Exclusion</label>
+                                        <div class="input-group control-group increment-exclusion" >
+                                            <textarea name="exclusion[]" id="" class="form-control"></textarea>
+                                            <div class="input-group-btn"> 
+                                            <button class="btn btn-success btn-exclusion" type="button"><i class="glyphicon glyphicon-plus"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="clone-exclusion hide">
+                                            <div class="control-group control-group-exclusion input-group" style="margin-top:10px">
+                                            <textarea name="exclusion[]" id="" class="form-control"></textarea>
+                                            <div class="input-group-btn"> 
+                                                <button class="btn btn-danger exclusion" type="button"><i class="glyphicon glyphicon-remove"></i></button>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-1">
+                                        <label for="harga awal">Add Ons</label>
+                                        <div class="input-group control-group increment-addons" >
+                                            <textarea name="add_ons[]" id="" class="form-control"></textarea>
+                                            <div class="input-group-btn"> 
+                                            <button class="btn btn-success btn-addons" type="button"><i class="glyphicon glyphicon-plus"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="clone-addons hide">
+                                            <div class="control-group control-group-addons input-group" style="margin-top:10px">
+                                            <textarea name="add_ons[]" id="" class="form-control"></textarea>
+                                            <div class="input-group-btn"> 
+                                                <button class="btn btn-danger addons" type="button"><i class="glyphicon glyphicon-remove"></i></button>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            <!--end::Form-->
+                        </div>
+                        <!--end::Card-->
                     </div>
-                    <!--begin::Form-->
-                    <form action="{{ route('add.post') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <div class="card-body">
-                            <div class="form-group mb-1">
-                                <label for="image">Foto Wisata</label>
-                                <input class="form-control" id="image" type="file" name="gambar" accept="image/*">
-                                @error('gambar')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
+                    <div class="col-md-6">
+                        <!--begin::Card-->
+                        <div class="card card-custom gutter-b example example-compact">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    Tambah Wisata
+                                </h3>
                             </div>
-                            <div class="form-group mb-1">
-                                <label>Lokasi Wisata</label>
-                                <textarea name="lokasi" id="lokasi" class="form-control"></textarea>
-                                @error('lokasi')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <div class="form-group mb-1">
-                                <label>Destinasi Wisata</label>
-                                <input type="text" class="form-control" name="judul" id="judul" placeholder="Wisata.."/>
-                                @error('judul')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <div class="form-group mb-1">
-                                <label>Deskripsi Wisata</label>
-                                <textarea name="deskripsi" id="deskripsi" class="form-control"></textarea>
-                                    @error('deskripsi')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                            </div>
-                            <div class="form-group mb-1">
-                                <label for="harga awal">Mulai Harga</label>
-                                <input type="number" class="form-control" name="harga_awal" id="harga_awal" placeholder="Rp."/>
-                                    @error('harga_awal')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                            </div>
-                            <div class="form-group mb-1">
-                                <label for="harga awal">Sampai Harga</label>
-                                <input type="number" class="form-control" name="harga_akhir" id="harga_akhir" placeholder="Rp."/>
-                                @error('harga_akhir')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <div class="form-group mb-1">
-                                <label for="harga awal">Inclusion</label>
-                                <div class="input-group control-group increment-inclusion" >
-                                   <textarea name="inclusion[]" id="" class="form-control"></textarea>
-                                    <div class="input-group-btn"> 
-                                    <button class="btn btn-success btn-inclusion" type="button"><i class="glyphicon glyphicon-plus"></i></button>
+                            <!--begin::Form-->
+                                <div class="card-body">
+                                    <div class="form-group mb-1">
+                                        <h1>Jadwal</h1>
+                                        <label>Day 1</label>
+                                        <input type="text" class="form-control" name="judul" id="judul" placeholder="Wisata.."/>
+                                        @error('judul')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
+                                    <div class="form-group mb-1">
+                                        <label>jadwal</label>
+                                        <textarea name="deskripsi" id="deskripsi" class="form-control"></textarea>
+                                            @error('deskripsi')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                    </div>
+                                    
                                 </div>
-                                <div class="clone-inclusion hide">
-                                    <div class="control-group control-group-inclusion input-group" style="margin-top:10px">
-                                   <textarea name="inclusion[]" id="" class="form-control"></textarea>
-                                    <div class="input-group-btn"> 
-                                        <button class="btn btn-danger danger-inclusion" type="button"><i class="glyphicon glyphicon-remove"></i></button>
-                                    </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group mb-1">
-                                <label for="harga awal">Exclusion</label>
-                                <div class="input-group control-group increment-exclusion" >
-                                    <textarea name="exclusion[]" id="" class="form-control"></textarea>
-                                    <div class="input-group-btn"> 
-                                    <button class="btn btn-success btn-exclusion" type="button"><i class="glyphicon glyphicon-plus"></i></button>
-                                    </div>
-                                </div>
-                                <div class="clone-exclusion hide">
-                                    <div class="control-group control-group-exclusion input-group" style="margin-top:10px">
-                                    <textarea name="exclusion[]" id="" class="form-control"></textarea>
-                                    <div class="input-group-btn"> 
-                                        <button class="btn btn-danger exclusion" type="button"><i class="glyphicon glyphicon-remove"></i></button>
-                                    </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group mb-1">
-                                <label for="harga awal">Add Ons</label>
-                                <div class="input-group control-group increment-addons" >
-                                    <textarea name="add_ons[]" id="" class="form-control"></textarea>
-                                    <div class="input-group-btn"> 
-                                    <button class="btn btn-success btn-addons" type="button"><i class="glyphicon glyphicon-plus"></i></button>
-                                    </div>
-                                </div>
-                                <div class="clone-addons hide">
-                                    <div class="control-group control-group-addons input-group" style="margin-top:10px">
-                                    <textarea name="add_ons[]" id="" class="form-control"></textarea>
-                                    <div class="input-group-btn"> 
-                                        <button class="btn btn-danger addons" type="button"><i class="glyphicon glyphicon-remove"></i></button>
-                                    </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
+
+                            <!--end::Form-->
                         </div>
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                            <button type="reset" class="btn btn-secondary">Cancel</button>
-                        </div>
-                    </form>
-                    <!--end::Form-->
+                        <!--end::Card-->
+                    </div>
                 </div>
-                <!--end::Card-->
-            </div>
+                <div class="card-footer col-md-6">
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button type="reset" class="btn btn-secondary">Cancel</button>
+                </div>
+            </form>
         </div>
         <!--end::Container-->
     </div>
