@@ -17,7 +17,7 @@
             <img src="{{ asset(''.$w->gambar) }}" style="border-radius:0%;" alt="">
             <h3>{{ $w->judul }}</h3>
             <p>Rp.{{ $w->harga_awal }}. - Rp.{{ $w->harga_akhir }}.</p>
-            <a href="#" class="btn">Book now</a>
+            <a href="{{ url('show/'.$w->judul) }}" class="btn">Book now</a>
         </div>
         @endforeach
     </div>

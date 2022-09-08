@@ -29,26 +29,24 @@ Route::get('/', function () {
 
 // wisata route
 Route::get('/wisata',[WisataController::class, 'index']);
-Route::view('/show', 'wisata.show');
-
+Route::get('/show/{judul}',[WisataController::class, 'detail']);
 // add 
 Route::view('/add', 'add');
 Route::view('/addm', 'addCars');
 Route::post('/add-mobil',[MobilController::class,'add_post'])->name('add.mobil');
-
-//login and register
-Route::get('/login',[LoginController::class,'index'])->name('login');
-Route::post('/post-login',[LoginController::class,'post'])->name('post.login');
-Route::post('/register',[RegisterController::class,'post'])->name('register');
-Route::post('/logout',[LoginController::class,'logout'])->name('logout');
-// Route::get('google',function(){
-//     return view('googleAuth');
-// });
-Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
-Route::get('auth/google/callback',[GoogleController::class,'handleGoogleCallback']);
-
 // Mobil route
 Route::get('/cars',[MobilController::class, 'index']);
-
 //About us route
 Route::view('about','aboutUs.index');
+
+//login and register
+Route::group(['middleware'=>'login'],function(){
+    Route::get('/login',[LoginController::class,'index'])->name('login');
+    Route::post('/post-login',[LoginController::class,'post'])->name('post.login');
+    Route::post('/register',[RegisterController::class,'post'])->name('register');
+    Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
+    Route::get('auth/google/callback',[GoogleController::class,'handleGoogleCallback']);
+});
+
+Route::post('/logout',[LoginController::class,'logout'])->name('logout');
+

@@ -17,8 +17,15 @@ class CreateWisatasTable extends Migration
             $table->id();
             $table->string('judul');
             $table->string('gambar');
+            $table->text('lokasi');
+            $table->text('exclusion','65000');
+            $table->text('inclusion','65000');
+            $table->text('deskripsi','65000');
+            $table->text('add_ons','65000');
             $table->bigInteger('harga_awal');
             $table->bigInteger('harga_akhir');
+            $table->foreignId('kegiatan_id')->nullable();
+            $table->foreignId('faq_id')->nullable();
             $table->timestamps();
         });
     }

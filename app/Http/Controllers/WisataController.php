@@ -16,6 +16,12 @@ class WisataController extends Controller
         return view('add');
     }
 
+    public function detail($judul){
+        $wisata = Wisata::where('judul',$judul)->firstOrFail();
+
+        return view('wisata.show')->with(compact('wisata'));
+    }
+
     public function add_post(Request $request){
         $request->validate([
             'gambar' => 'required',
@@ -41,12 +47,17 @@ class WisataController extends Controller
         $add = new Wisata;
         $add->gambar = $fileName;
         $add->judul = $request->judul;
+        $add->lokasi = $request->lokasi;
+        $add->deskripsi = $request->deskripsi;
+        $add->inclusion = implode(',',$request->inclusion);
+        $add->exclusion = implode(',',$request->exclusion);
+        $add->add_ons = implode(',',$request->add_ons);
         $add->harga_awal = $request->harga_awal;
         $add->harga_akhir = $request->harga_akhir;
         $add->created_at = now();
         $add->updated_at = now();
         $add->save();
 
-        return redirect('/{locale}/wisata');
+        return redirect('/admin/wisata');
     }
 }
