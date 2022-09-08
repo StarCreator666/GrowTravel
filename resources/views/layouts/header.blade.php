@@ -10,7 +10,7 @@
         <a href="/wisata">{{ __('main.tour') }} </a>
         <a href="/cars">{{ __('main.rent') }}</a>
         <a href="#packages">{{ __('main.info') }}</a>
-        <a href="#shop">{{ __('main.about') }}</a>
+        <a href="/about">{{ __('main.about') }}</a>
 
 
 

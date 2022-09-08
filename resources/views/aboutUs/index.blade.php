@@ -3,8 +3,8 @@
 @section('container')
 <link rel="stylesheet" href="{{ asset('css/about.css') }}">
 
-<div class="jumbotron" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../images/bg-cars.jpg) no-repeat;    background-size: cover;
-    background-attachment: fixed;">
+<div class="jumbotron" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../images/about-bg.jpg) no-repeat;    background-size: cover;
+      background-position: center;  background-attachment: fixed;">
     <h1>About GTI</h1>
 </div>
 <section class="best-sell">
