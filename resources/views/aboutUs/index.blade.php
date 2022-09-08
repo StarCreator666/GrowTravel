@@ -117,15 +117,15 @@
 
 
 </section>
-<div class="map" style="height: 60vh; background: rgba(255,206,236,0.5);">
+<div class="map" style="height: 60vh; background: #FFF4F0;">
     <div class="left">
-        <h1>Locate Us</h1>
-        <h3>Indonesia Office:</h3>
-        <h3>Level 3, TripleOne Somerset 111 Somerset Road, Singapore 238164 (Please call us first before visiting)</h3>
+        <h1 class="map-h1">Locate Us</h1>
+        <h3 class="map-h3">Indonesia Office:</h3>
+        <h3 class="map-lokasi">Perum Permata Regency 1 Blok 10/28, Perun Gpa, Ngijo, Kec. Karang Ploso, Kabupaten Malang, Jawa Timur 65152 (Please call us first before visiting)</h3>
     </div>
     <div class="right">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4699.6892549107015!2d112.60426899007943!3d-7.900099846740119!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7881c2c4637501%3A0x10433eaf1fb2fb4c!2sHummasoft%20Technology!5e0!3m2!1sid!2sid!4v1662381630746!5m2!1sid!2sid" 
-        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        width="100%" height="95%" style="border:0; padding:30px" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 </div>
 @endsection

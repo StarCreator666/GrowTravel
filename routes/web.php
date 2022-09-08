@@ -29,6 +29,7 @@ Route::get('/', function () {
 
 // wisata route
 Route::get('/wisata',[WisataController::class, 'index']);
+Route::view('/show', 'wisata.show');
 
 // add 
 Route::view('/add', 'add');
