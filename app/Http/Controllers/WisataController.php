@@ -26,11 +26,15 @@ class WisataController extends Controller
         $request->validate([
             'gambar' => 'required',
             'judul' => 'required',
+            'deskripsi' => 'required',
+            'lokasi' => 'required',
             'harga_awal' => 'required|numeric',
             'harga_akhir' => 'required|numeric',
         ],[
             'gambar.required' => 'Gambar harus di isi',
             'judul.required' => 'Judul harus diisi',
+            'lokasi.required' => 'Lokasi harus di isi',
+            'deskripsi.required' => 'Deskripsi harus diisi',
             'harga_awal.required' => 'Harga harus diisi',
             'harga_awal.numeric' => 'Harga harus diisi angka',
             'harga_akhir.required' => 'Harga harus diisi',
@@ -41,7 +45,6 @@ class WisataController extends Controller
         if($request->hasFile('gambar')){
             $file = $request->gambar;
             $fileName = $file->move("image-travel/", date('YmdHis').'.'. $file->getClientOriginalExtension());
-
         }
         
         $add = new Wisata;
@@ -49,6 +52,16 @@ class WisataController extends Controller
         $add->judul = $request->judul;
         $add->lokasi = $request->lokasi;
         $add->deskripsi = $request->deskripsi;
+        $add->day1 = $request->day1;
+        $add->keterangan1 = $request->keterangan1;
+        $add->day2 = $request->day2;
+        $add->keterangan2 = $request->keterangan2;
+        $add->day3 = $request->day3;
+        $add->keterangan3 = $request->keterangan3;
+        $add->day4 = $request->day4;
+        $add->keterangan4 = $request->keterangan4;
+        $add->day5 = $request->day5;
+        $add->keterangan5 = $request->keterangan5;
         $add->inclusion = implode(',',$request->inclusion);
         $add->exclusion = implode(',',$request->exclusion);
         $add->add_ons = implode(',',$request->add_ons);

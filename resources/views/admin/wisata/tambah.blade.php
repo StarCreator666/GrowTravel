@@ -3,7 +3,6 @@
 @section('title','dashboard')
 
 @section('content')
-
 <div class="content  d-flex flex-column flex-column-fluid" id="kt_content">
     <!--begin::Subheader-->
     <div class="subheader py-2 py-lg-6  subheader-transparent " id="kt_subheader">
@@ -74,12 +73,12 @@
                                     </div>
                                     <div class="form-group mb-1">
                                         <label for="exampleSelect1">Jadwal</label>
-                                        <select class="form-control" id="exampleSelect1">
-                                            <option>1 hari</option>
-                                            <option>2 hari</option>
-                                            <option>3 hari</option>
-                                            <option>4 hari</option>
-                                            <option>5 hari</option>
+                                        <select class="form-control" id="exampleSelect1" onchange="showresult(this.value)">
+                                            <option value="1" id="hari1">1 hari</option>
+                                            <option value="2" id="hari2">2 hari</option>
+                                            <option value="3" id="hari3">3 hari</option>
+                                            <option value="4" id="hari4">4 hari</option>
+                                            <option value="5" id="hari5">5 hari</option>
                                         </select>
                                     </div>
                                     <div class="form-group mb-1">
@@ -121,7 +120,7 @@
                                             <button class="btn btn-success btn-exclusion" type="button"><i class="glyphicon glyphicon-plus"></i></button>
                                             </div>
                                         </div>
-                                        <div class="clone-exclusion hide">
+                                        <div class="clone-exclusion hide" style="display: none">
                                             <div class="control-group control-group-exclusion input-group" style="margin-top:10px">
                                             <textarea name="exclusion[]" id="" class="form-control"></textarea>
                                             <div class="input-group-btn"> 
@@ -138,7 +137,7 @@
                                             <button class="btn btn-success btn-addons" type="button"><i class="glyphicon glyphicon-plus"></i></button>
                                             </div>
                                         </div>
-                                        <div class="clone-addons hide">
+                                        <div class="clone-addons hide" style="display: none">
                                             <div class="control-group control-group-addons input-group" style="margin-top:10px">
                                             <textarea name="add_ons[]" id="" class="form-control"></textarea>
                                             <div class="input-group-btn"> 
@@ -158,27 +157,92 @@
                         <div class="card card-custom gutter-b example example-compact">
                             <div class="card-header">
                                 <h3 class="card-title">
-                                    Tambah Wisata
+                                    Jadwal Wisata
                                 </h3>
                             </div>
                             <!--begin::Form-->
                                 <div class="card-body">
-                                    <div class="form-group mb-1">
-                                        <h1>Jadwal</h1>
-                                        <label>Day 1</label>
-                                        <input type="text" class="form-control" name="judul" id="judul" placeholder="Wisata.."/>
-                                        @error('judul')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group mb-1">
-                                        <label>jadwal</label>
-                                        <textarea name="deskripsi" id="deskripsi" class="form-control"></textarea>
-                                            @error('deskripsi')
+                                    <div id="days1">
+                                        <div class="form-group mb-1">
+                                            <label>Day 1</label>
+                                            <input type="text" class="form-control" name="day1" id="day1" placeholder="Wisata.." required/>
+                                            @error('day')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
+                                        </div>
+                                        <div class="form-group mb-1">
+                                            <label>jadwal</label>
+                                            <textarea name="keterangan1" id="keterangan1" class="form-control" required></textarea>
+                                            @error('keterangan')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
                                     </div>
-                                    
+                                    <div id="days2" style="display: none">
+                                        <div class="form-group mb-1">
+                                            <label>Day 2</label>
+                                            <input type="text" class="form-control" name="day2" id="day2" placeholder="Wisata.."/>
+                                            @error('day')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group mb-1">
+                                            <label>jadwal</label>
+                                            <textarea name="keterangan2" id="keterangan2" class="form-control"></textarea>
+                                            @error('keterangan')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div id="days3" style="display: none">
+                                        <div class="form-group mb-1">
+                                            <label>Day 3</label>
+                                            <input type="text" class="form-control" name="day3" id="day3" placeholder="Wisata.."/>
+                                            @error('day')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group mb-1">
+                                            <label>jadwal</label>
+                                            <textarea name="keterangan3" id="keterangan3" class="form-control"></textarea>
+                                            @error('keterangan')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div id="days4" style="display: none">
+                                        <div class="form-group mb-1">
+                                            <label>Day 4</label>
+                                            <input type="text" class="form-control" name="day4" id="day4" placeholder="Wisata.."/>
+                                            @error('day')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group mb-1">
+                                            <label>jadwal</label>
+                                            <textarea name="keterangan4" id="keterangan4" class="form-control"></textarea>
+                                            @error('keterangan')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div id="days5" style="display: none">
+                                        <div class="form-group mb-1">
+                                            <label>Day 5</label>
+                                            <input type="text" class="form-control" name="day5" id="day5" placeholder="Wisata.."/>
+                                            @error('day')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group mb-1">
+                                            <label>jadwal</label>
+                                            <textarea class="form-control" name="keterangan5" id="keterangan5"></textarea>
+                                            @error('keterangan')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                
                                 </div>
 
                             <!--end::Form-->
@@ -236,31 +300,48 @@
     });
 </script>
 <script>
-    // Class definition
-    var KTAutosize = function () {
-
-    // Private functions
-    var demos = function () {
-        // basic demo
-        var demo1 = $('#kt_autosize_1');
-        var demo2 = $('#kt_autosize_2');
-
-        autosize(demo1);
-
-        autosize(demo2);
-        autosize.update(demo2);
+   const day1 = document.getElementById('days1');
+   const day2 = document.getElementById('days2');
+   const day3 = document.getElementById('days3');
+   const day4 = document.getElementById('days4');
+   const day5 = document.getElementById('days5');
+    function showresult(str){
+        if(str == "1"){
+            day1.style.display = 'block';
+            day2.style.display = 'none';
+            day3.style.display = 'none';
+            day4.style.display = 'none';
+            day5.style.display = 'none';
+        }else if(str == "2"){
+            day1.style.display = 'block';
+            day2.style.display = 'block';
+            day3.style.display = 'none';
+            day4.style.display = 'none';
+            day5.style.display = 'none';
+        }else if(str == "3"){
+            day1.style.display = 'block';
+            day2.style.display = 'block';
+            day3.style.display = 'block';
+            day4.style.display = 'none';
+            day5.style.display = 'none';
+        }else if(str == "4"){
+            day1.style.display = 'block';
+            day2.style.display = 'block';
+            day3.style.display = 'block';
+            day4.style.display = 'block';
+            day5.style.display = 'none';
+        }else if(str == "5"){
+            day1.style.display = 'block';
+            day2.style.display = 'block';
+            day3.style.display = 'block';
+            day4.style.display = 'block';
+            day5.style.display = 'block';
+        }
     }
 
-    return {
-        // public functions
-        init: function() {
-            demos();
-        }
-    };
-    }();
-
-    jQuery(document).ready(function() {
-    KTAutosize.init();
+    const radioButtons = document.querySelectorAll('select[name="hari"]');
+    radioButtons.forEach(radio=>{
+        radio.addEventListener('click',handleRadioClick);
     });
 </script>
 @endpush
