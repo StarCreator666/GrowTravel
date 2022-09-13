@@ -3,10 +3,10 @@
 return [
     "english" => "english",
     "indonesian" => "indonesian",
-    "home" => "home",
+    "home" => "Home",
     "tour" => "Tour",
-    "about" => "about Us",
-    "rent" => "Rent A Car",
+    "about" => "About Us",
+    "rent" => "Rent Car",
     "info" => "Info Travel",
     "popular" => "most Popular Travel",
     "beranda" => "Home"

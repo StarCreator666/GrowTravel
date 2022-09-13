@@ -16,7 +16,7 @@
 
     <!-- custom css file link  -->
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-    <link rel="shortcut icon" href="images/logo-wp.png" />
+    <link rel="shortcut icon" href="{{ asset('images/logo-wp.png') }}" />
 
 </head>
 <body>

@@ -13,8 +13,8 @@
             <div class="swiper-slide">
                 <div class="box" style="background: url(images/home-bg-1.jpg) no-repeat;">
                     <div class="content">
-                        <span>never stop</span>
-                        <h3>exploring</h3>
+                        <span>Never Stop</span>
+                        <h3>Exploring</h3>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit unde ex molestias soluta consequatur saepe aliquam, excepturi delectus consequuntur minus!</p>
                         <a href="#" class="btn">get started</a>
                     </div>
@@ -24,8 +24,8 @@
             <div class="swiper-slide">
                 <div class="box second" style="background: url(images/baru2.jpg) no-repeat;">
                     <div class="content-white">
-                        <span>make tour</span>
-                        <h3>amazing</h3>
+                        <span>Make Tour</span>
+                        <h3>Amazing</h3>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit unde ex molestias soluta consequatur saepe aliquam, excepturi delectus consequuntur minus!</p>
                         <a href="#" class="btn">get started</a>
                     </div>
@@ -35,8 +35,8 @@
             <div class="swiper-slide">
                 <div class="box second" style="background: url(images/baru1.jpg) no-repeat;">
                     <div class="content-white">
-                        <span>explore the</span>
-                        <h3>new world</h3>
+                        <span>Explore The</span>
+                        <h3>New World</h3>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit unde ex molestias soluta consequatur saepe aliquam, excepturi delectus consequuntur minus!</p>
                         <a href="#" class="btn">get started</a>
                     </div>

@@ -165,14 +165,14 @@
                                     <div id="days1">
                                         <div class="form-group mb-1">
                                             <label>Day 1</label>
-                                            <input type="text" class="form-control" name="day1" id="day1" placeholder="Wisata.." required/>
+                                            <input type="text" class="form-control" name="day[]" id="day1" placeholder="Wisata.." required/>
                                             @error('day')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
                                         <div class="form-group mb-1">
                                             <label>jadwal</label>
-                                            <textarea name="keterangan1" id="keterangan1" class="form-control" required></textarea>
+                                            <textarea name="keterangan[]" id="keterangan1" class="form-control" required></textarea>
                                             @error('keterangan')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -181,14 +181,14 @@
                                     <div id="days2" style="display: none">
                                         <div class="form-group mb-1">
                                             <label>Day 2</label>
-                                            <input type="text" class="form-control" name="day2" id="day2" placeholder="Wisata.."/>
+                                            <input type="text" class="form-control" name="day[]" id="day2" placeholder="Wisata.."/>
                                             @error('day')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
                                         <div class="form-group mb-1">
                                             <label>jadwal</label>
-                                            <textarea name="keterangan2" id="keterangan2" class="form-control"></textarea>
+                                            <textarea name="keterangan2" id="keterangan[]" class="form-control"></textarea>
                                             @error('keterangan')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -197,14 +197,14 @@
                                     <div id="days3" style="display: none">
                                         <div class="form-group mb-1">
                                             <label>Day 3</label>
-                                            <input type="text" class="form-control" name="day3" id="day3" placeholder="Wisata.."/>
+                                            <input type="text" class="form-control" name="day[]" id="day3" placeholder="Wisata.."/>
                                             @error('day')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
                                         <div class="form-group mb-1">
                                             <label>jadwal</label>
-                                            <textarea name="keterangan3" id="keterangan3" class="form-control"></textarea>
+                                            <textarea name="keterangan3" id="keterangan[]" class="form-control"></textarea>
                                             @error('keterangan')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -213,14 +213,14 @@
                                     <div id="days4" style="display: none">
                                         <div class="form-group mb-1">
                                             <label>Day 4</label>
-                                            <input type="text" class="form-control" name="day4" id="day4" placeholder="Wisata.."/>
+                                            <input type="text" class="form-control" name="day[]" id="day4" placeholder="Wisata.."/>
                                             @error('day')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
                                         <div class="form-group mb-1">
                                             <label>jadwal</label>
-                                            <textarea name="keterangan4" id="keterangan4" class="form-control"></textarea>
+                                            <textarea name="keterangan4" id="keterangan[]" class="form-control"></textarea>
                                             @error('keterangan')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -229,14 +229,14 @@
                                     <div id="days5" style="display: none">
                                         <div class="form-group mb-1">
                                             <label>Day 5</label>
-                                            <input type="text" class="form-control" name="day5" id="day5" placeholder="Wisata.."/>
+                                            <input type="text" class="form-control" name="day[]" id="day5" placeholder="Wisata.."/>
                                             @error('day')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
                                         <div class="form-group mb-1">
                                             <label>jadwal</label>
-                                            <textarea class="form-control" name="keterangan5" id="keterangan5"></textarea>
+                                            <textarea class="form-control" name="keterangan[]" id="keterangan5"></textarea>
                                             @error('keterangan')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -305,6 +305,14 @@
    const day3 = document.getElementById('days3');
    const day4 = document.getElementById('days4');
    const day5 = document.getElementById('days5');
+   const title2 = document.getElementById('day2');
+   const title3 = document.getElementById('day3');
+   const title4 = document.getElementById('day4');
+   const title5 = document.getElementById('day5');
+   const ket2 = document.getElementById('keterangan2');
+   const ket3 = document.getElementById('keterangan3');
+   const ket4 = document.getElementById('keterangan4');
+   const ket5 = document.getElementById('keterangan5');
     function showresult(str){
         if(str == "1"){
             day1.style.display = 'block';
@@ -312,30 +320,71 @@
             day3.style.display = 'none';
             day4.style.display = 'none';
             day5.style.display = 'none';
+            title2.required = false;
+            title3.required = false;
+            title4.required = false;
+            title5.required = false;
+            ket2.required = false;
+            ket3.required = false;
+            ket4.required = false;
+            ket5.required = false;
+
         }else if(str == "2"){
             day1.style.display = 'block';
             day2.style.display = 'block';
             day3.style.display = 'none';
             day4.style.display = 'none';
             day5.style.display = 'none';
+            title2.required = true;
+            title3.required = false;
+            title4.required = false;
+            title5.required = false;
+            ket2.required = true;
+            ket3.required = false;
+            ket4.required = false;
+            ket5.required = false;
         }else if(str == "3"){
             day1.style.display = 'block';
             day2.style.display = 'block';
             day3.style.display = 'block';
             day4.style.display = 'none';
             day5.style.display = 'none';
+            title2.required = true;
+            title3.required = true;
+            title4.required = false;
+            title5.required = false;
+            ket2.required = true;
+            ket3.required = true;
+            ket4.required = false;
+            ket5.required = false;
         }else if(str == "4"){
             day1.style.display = 'block';
             day2.style.display = 'block';
             day3.style.display = 'block';
             day4.style.display = 'block';
             day5.style.display = 'none';
+            title2.required = true;
+            title3.required = true;
+            title4.required = true;
+            title5.required = false;
+            ket2.required = true;
+            ket3.required = true;
+            ket4.required = true;
+            ket5.required = false;
         }else if(str == "5"){
             day1.style.display = 'block';
             day2.style.display = 'block';
             day3.style.display = 'block';
             day4.style.display = 'block';
             day5.style.display = 'block';
+            title2.required = true;
+            title3.required = true;
+            title4.required = true;
+            title5.required = true;
+            ket2.required = true;
+            ket3.required = true;
+            ket4.required = true;
+            ket5.required = true;
         }
     }
 

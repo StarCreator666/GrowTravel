@@ -2,7 +2,7 @@
 
 <header class="header">
     
-    <a href="#" class="logo"><img class="logo" src="images/logo-gt.png" alt=""></a>
+    <a href="#" class="logo"><img class="logo" src="{{ asset('images/logo-gt.png') }}" alt=""></a>
 
     <nav class="navbar">
         <div id="nav-close" class="fas fa-times"></div>

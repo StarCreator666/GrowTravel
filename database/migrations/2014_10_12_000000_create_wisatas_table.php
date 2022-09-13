@@ -25,16 +25,8 @@ class CreateWisatasTable extends Migration
             $table->bigInteger('harga_awal');
             $table->bigInteger('harga_akhir');
             // $table->foreignId('kegiatan_id')->nullable();
-            $table->string('day1')->nullable();
-            $table->string('day2')->nullable();
-            $table->string('day3')->nullable();
-            $table->string('day4')->nullable();
-            $table->string('day5')->nullable();
-            $table->text('kegiatan1','65000')->nullable();
-            $table->text('kegiatan2','65000')->nullable();
-            $table->text('kegiatan3','65000')->nullable();
-            $table->text('kegiatan4','65000')->nullable();
-            $table->text('kegiatan5','65000')->nullable();
+            $table->text('day','65000');
+            $table->text('keterangan','65000');
             $table->foreignId('faq_id')->nullable();
             $table->timestamps();
         });
