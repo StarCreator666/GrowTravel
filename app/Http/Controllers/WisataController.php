@@ -52,6 +52,7 @@ class WisataController extends Controller
         $add->judul = $request->judul;
         $add->lokasi = $request->lokasi;
         $add->deskripsi = $request->deskripsi;
+        $add->hari = $request->hari;
         $add->day = implode('+',$request->day);
         $add->keterangan = implode('+',$request->keterangan);
         $add->inclusion = implode(',',$request->inclusion);

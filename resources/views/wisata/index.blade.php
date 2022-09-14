@@ -15,7 +15,7 @@
             <h3>Location</h3>
             <div class="checkbox-rect">
                 <input type="checkbox" id="checkbox-rect1" name="check">
-                <label for="checkbox-rect1">Malang</label>
+                <label for="checkbox-rect1">All</label>
               </div>
               <div class="checkbox-rect">
                 <input type="checkbox" id="checkbox-rect2" name="check">
@@ -26,11 +26,11 @@
               <h3>Duration</h3>
               <div class="checkbox-rect">
                   <input type="checkbox" id="checkbox-rect3" name="check">
-                  <label for="checkbox-rect3">2 days</label>
+                  <label for="checkbox-rect3">All</label>
                 </div>
                 <div class="checkbox-rect">
                   <input type="checkbox" id="checkbox-rect4" name="check">
-                  <label for="checkbox-rect4">3 days</label>
+                  <label for="checkbox-rect4">2 days</label>
                 </div>
 
                 <br><br>

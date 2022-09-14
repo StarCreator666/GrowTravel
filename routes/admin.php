@@ -10,5 +10,6 @@ Route::group(['middleware' => 'admin'],function () {
     // Route Wisata
     Route::view('admin/wisata','admin.wisata.index');
     Route::view('admin/wisata/tambah','admin.wisata.tambah');
+    Route::view('admin/wisata/lokasi','admin.wisata.lokasi');
     Route::post('/add-post',[WisataController::class,'add_post'])->name('add.post');
 });    

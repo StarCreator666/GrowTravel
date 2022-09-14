@@ -24,6 +24,7 @@ class CreateWisatasTable extends Migration
             $table->text('add_ons','65000');
             $table->bigInteger('harga_awal');
             $table->bigInteger('harga_akhir');
+            $table->integer('hari');
             // $table->foreignId('kegiatan_id')->nullable();
             $table->text('day','65000');
             $table->text('keterangan','65000');

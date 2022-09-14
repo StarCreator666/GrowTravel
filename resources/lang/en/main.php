@@ -1,8 +1,8 @@
 <?php
 
 return [
-    "english" => "english",
-    "indonesian" => "indonesian",
+    "english" => "English",
+    "indonesian" => "Indonesian",
     "home" => "Home",
     "tour" => "Tour",
     "about" => "About Us",
