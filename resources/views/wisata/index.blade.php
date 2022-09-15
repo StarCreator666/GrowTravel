@@ -10,29 +10,34 @@
 
     <section class="filter">
         <div class="text-filter">
-            <form action="">
-            <h1>Filter</h1>
-            <h3>Location</h3>
-            <div class="checkbox-rect">
-                <input type="checkbox" id="checkbox-rect1" name="check">
-                <label for="checkbox-rect1">All</label>
-              </div>
-              <div class="checkbox-rect">
-                <input type="checkbox" id="checkbox-rect2" name="check">
-                <label for="checkbox-rect2">Surabaya</label>
-              </div>
+            <form action="{{ route('user.wisata') }}">
+              <h1>Filter</h1>
+                <h3>Search</h3>
+                <div>
+                    <input type="text" name="search" class="form-control" value="{{ $search }}">
+                </div>
+                <h3>Location</h3>
+                <div>
+                  <select class="form-control" name="lokasi">
+                    <option value=""></option>
+                    @foreach($lokasis as $l)
+                    <option value="{{ $l->name }}" @if($lokasi == $l->name) selected @endif>{{ $l->name }}</option>
+                    @endforeach
+                  </select>
+                </div>
 
               <br>
-              <h3>Duration</h3>
-              <div class="checkbox-rect">
-                  <input type="checkbox" id="checkbox-rect3" name="check">
-                  <label for="checkbox-rect3">All</label>
-                </div>
-                <div class="checkbox-rect">
-                  <input type="checkbox" id="checkbox-rect4" name="check">
-                  <label for="checkbox-rect4">2 days</label>
-                </div>
-
+                <h3>Duration</h3>
+                  <div>
+                    <select class="form-control" name="hari">
+                      <option value="" @if($durasi == '') selected @endif></option>
+                      <option value="1" @if($durasi == '1') selected @endif>1 hari</option>
+                      <option value="2" @if($durasi == '2') selected @endif>2 hari</option>
+                      <option value="3" @if($durasi == '3') selected @endif>3 hari</option>
+                      <option value="4" @if($durasi == '4') selected @endif>4 hari</option>
+                      <option value="5" @if($durasi == '5') selected @endif>5 hari</option>
+                    </select>
+                  </div>
                 <br><br>
                 <button type="submit" style="border: 1px solid blue; background:white; ">Search</button>
             </form>

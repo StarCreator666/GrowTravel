@@ -28,7 +28,7 @@ Route::get('/', function () {
 });
 
 // wisata route
-Route::get('/wisata',[WisataController::class, 'index']);
+Route::get('/wisata',[WisataController::class, 'index'])->name('user.wisata');
 Route::get('/show/{judul}',[WisataController::class, 'detail']);
 // add 
 Route::view('/add', 'add');

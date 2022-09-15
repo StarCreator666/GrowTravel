@@ -102,14 +102,37 @@
                                     </div>
                                     <div class="form-group mb-1">
                                         <label for="exampleSelect1">Inclusion</label>
-                                        <select class="form-control mb-5" name="level" id="level" onchange="showpilihan(this.value)">
+                                        <select class="form-control mb-5" name="inclusion[]" id="bronze" onchange="showpilihan(this.value)">
                                             <option value="" id=""></option>
                                             @foreach($inclusion as $in)
-                                                <option value="{{ $in->id }}" id="">{{ $in->level }}</option>
+                                                @if($in->level == 'bronze')
+                                                <option value="{{ $in->inclusion }}" id="">{{ $in->name }}</option>
+                                                @endif
                                             @endforeach
                                         </select>
-                                        <select class="form-control" name="inclusion" id="inclusion" onchange="showinclusion(this.value)">
+                                        <select class="form-control mb-5" name="inclusion[]" id="silver" onchange="showpilihan(this.value)">
                                             <option value="" id=""></option>
+                                            @foreach($inclusion as $in)
+                                                @if($in->level == 'silver')
+                                                <option value="{{ $in->inclusion }}" id="">{{ $in->name }}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                        <select class="form-control mb-5" name="inclusion[]" id="gold" onchange="showpilihan(this.value)">
+                                            <option value="" id=""></option>
+                                            @foreach($inclusion as $in)
+                                                @if($in->level == 'gold')
+                                                <option value="{{ $in->inclusion }}" id="">{{ $in->name }}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                        <select class="form-control mb-5" name="inclusion[]" id="luxury" onchange="showpilihan(this.value)">
+                                            <option value="" id=""></option>
+                                            @foreach($inclusion as $in)
+                                                @if($in->level == 'luxury')
+                                                <option value="{{ $in->inclusion }}" id="">{{ $in->name }}</option>
+                                                @endif
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group mb-1">
@@ -117,7 +140,7 @@
                                         <select class="form-control mb-5" name="exclusion" onchange="showexclusion(this.value)">
                                             <option value=""></option>
                                             @foreach($exclusion as $ex)
-                                                <option value="{{ $ex->id }}" id="">{{ $ex->name }}</option>
+                                                <option value="{{ $ex->exclusion }}" id="">{{ $ex->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -164,7 +187,7 @@
                                         </div>
                                         <div class="form-group mb-1">
                                             <label for="image">Foto Kegiatan</label>
-                                            <input class="form-control" id="foto_kegiatan1" type="file" name="foto_kegiatan[]" accept="image/*" multiple>
+                                            <input class="form-control" id="foto_kegiatan1" type="file" name="foto_kegiatan1[]" accept="image/*" multiple>
                                             @error('foto_kegiatan')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -187,7 +210,7 @@
                                         </div>
                                          <div class="form-group mb-1">
                                             <label for="image">Foto Kegiatan</label>
-                                            <input class="form-control" id="foto_kegiatan2" type="file" name="foto_kegiatan[]" accept="image/*" multiple>
+                                            <input class="form-control" id="foto_kegiatan2" type="file" name="foto_kegiatan2[]" accept="image/*" multiple>
                                             @error('foto_kegiatan')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -210,7 +233,7 @@
                                         </div>
                                         <div class="form-group mb-1">
                                             <label for="image">Foto Kegiatan</label>
-                                            <input class="form-control" id="foto_kegiatan3" type="file" name="foto_kegiatan[]" accept="image/*" multiple>
+                                            <input class="form-control" id="foto_kegiatan3" type="file" name="foto_kegiatan3[]" accept="image/*" multiple>
                                             @error('foto_kegiatan')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -233,7 +256,7 @@
                                         </div>
                                         <div class="form-group mb-1">
                                             <label for="image">Foto Kegiatan</label>
-                                            <input class="form-control" id="foto_kegiatan4" type="file" name="foto_kegiatan[]" accept="image/*" multiple>
+                                            <input class="form-control" id="foto_kegiatan4" type="file" name="foto_kegiatan4[]" accept="image/*" multiple>
                                             @error('foto_kegiatan')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -256,7 +279,7 @@
                                         </div>
                                         <div class="form-group mb-1">
                                             <label for="image">Foto Kegiatan</label>
-                                            <input class="form-control" id="foto_kegiatan5" type="file" name="foto_kegiatan[]" accept="image/*" multiple>
+                                            <input class="form-control" id="foto_kegiatan5" type="file" name="foto_kegiatan5[]" accept="image/*" multiple>
                                             @error('foto_kegiatan')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -319,6 +342,7 @@
 @endsection
 
 @push('script')
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
       $(".btn-inclusion").click(function(){ 

@@ -6,8 +6,10 @@
     <base href="../../">
     <meta charset="utf-8" />
     <title>@yield('title')| Dashboard</title>
-    <meta name="description" content="Page with empty content" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <meta name="description" content="Updates and statistics"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
     <!--begin::Fonts-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
