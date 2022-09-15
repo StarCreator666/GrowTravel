@@ -4,16 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\{Wisata};
+use Illuminate\Support\Facades\DB;
 
 class WisataController extends Controller
 {
     public function index(){
-        $wisata = Wisata::limit(4)->get();
+        $wisata = Wisata::all();
         return view('wisata.index')->with(compact('wisata'));
     }
 
     public function add_form(){
-        return view('add');
+        $lokasi = DB::table('lokasis')->orderBy('name','asc')->get();
+        $exclusion = DB::table('exclusions')->orderBy('name','asc')->get();
+        $inclusion = DB::table('inclusions')->get();
+        return view('admin.wisata.tambah')->with(compact('lokasi','exclusion','inclusion'));
     }
 
     public function detail($judul){
@@ -65,5 +69,42 @@ class WisataController extends Controller
         $add->save();
 
         return redirect('/admin/wisata');
+    }
+
+    public function add_lokasi(Request $request){
+        DB::table('lokasis')->insert([
+            'name' => $request->name,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        return redirect()->back();
+    }
+
+    public function add_inclusion(Request $request){
+        DB::table('inclusions')->insert([
+            'name' => $request->name,
+            'inclusion' => implode(',',$request->inclusion),
+            'level' => $request->level,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        return redirect()->back();
+        // return redirect('/admin/wisata');
+    }
+    public function add_exclusion(Request $request){
+        DB::table('exclusions')->insert([
+            'name' => $request->name,
+            'exclusion' => implode(',',$request->exclusion),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        return redirect()->back();
+        // return redirect('/admin/wisata');
+    }
+
+    public function inclusion_dropdown(Request $request){
+        $inclusion = $inclusion = DB::table('inclusions')->where('id',$request->id)->get();
+
+        return response()->json($inclusion);
     }
 }

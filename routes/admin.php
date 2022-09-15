@@ -9,7 +9,13 @@ Route::group(['middleware' => 'admin'],function () {
     
     // Route Wisata
     Route::view('admin/wisata','admin.wisata.index');
-    Route::view('admin/wisata/tambah','admin.wisata.tambah');
+    Route::get('admin/wisata/tambah',[WisataController::class,'add_form']);
+    Route::post('admin/wisata/inclusion-dropdown',[WisataController::class,'inclusion_dropdown'])->name('inclusion_dropdown');
     Route::view('admin/wisata/lokasi','admin.wisata.lokasi');
+    Route::view('admin/wisata/inclusion','admin.wisata.inclusion');
+    Route::view('admin/wisata/exclusion','admin.wisata.exclusion');
     Route::post('/add-post',[WisataController::class,'add_post'])->name('add.post');
+    Route::post('/add-lokasi',[WisataController::class,'add_lokasi'])->name('add.lokasi');
+    Route::post('/add-inclusion',[WisataController::class,'add_inclusion'])->name('add.inclusion');
+    Route::post('/add-exclusion',[WisataController::class,'add_exclusion'])->name('add.exclusion');
 });    

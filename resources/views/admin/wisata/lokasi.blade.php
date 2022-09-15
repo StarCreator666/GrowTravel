@@ -30,7 +30,7 @@
     <div class="d-flex flex-column-fluid">
         <!--begin::Container-->
         <div class=" container ">
-            <form action="{{ route('add.post') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('add.lokasi') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-md-6">
@@ -45,8 +45,8 @@
                                 <div class="card-body">
                                     <div class="form-group mb-1">
                                         <label>Lokasi Wisata </label>
-                                        <input type="text" class="form-control" name="judul" id="judul" placeholder="Lokasi.."/>
-                                        @error('judul')
+                                        <input type="text" class="form-control" name="name" id="name" placeholder="Lokasi.."/>
+                                        @error('name')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>

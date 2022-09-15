@@ -52,7 +52,12 @@
                                     </div>
                                     <div class="form-group mb-1">
                                         <label>Lokasi Wisata</label>
-                                        <textarea name="lokasi" id="lokasi" class="form-control"></textarea>
+                                        <select class="form-control" name="lokasi">
+                                            <option value=""></option>
+                                            @foreach($lokasi as $l)
+                                            <option value="{{ $l->name }}">{{ $l->name }}</option>
+                                            @endforeach
+                                        </select>
                                         @error('lokasi')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -96,50 +101,37 @@
                                         @enderror
                                     </div>
                                     <div class="form-group mb-1">
-                                        <label for="harga awal">Inclusion</label>
-                                        <div class="input-group control-group increment-inclusion" >
-                                        <textarea name="inclusion[]" id="" class="form-control"></textarea>
-                                            <div class="input-group-btn"> 
-                                            <button class="btn btn-success btn-inclusion" type="button"><i class="glyphicon glyphicon-plus"></i></button>
-                                            </div>
-                                        </div>
-                                        <div class="clone-inclusion hide" style="display: none">
-                                            <div class="control-group control-group-inclusion input-group" style="margin-top:10px">
-                                        <textarea name="inclusion[]" id="" class="form-control" placeholder="jj"></textarea>
-                                            <div class="input-group-btn"> 
-                                                <button class="btn btn-danger danger-inclusion" type="button"><i class="glyphicon glyphicon-remove"></i></button>
-                                            </div>
-                                            </div>
-                                        </div>
+                                        <label for="exampleSelect1">Inclusion</label>
+                                        <select class="form-control mb-5" name="level" id="level" onchange="showpilihan(this.value)">
+                                            <option value="" id=""></option>
+                                            @foreach($inclusion as $in)
+                                                <option value="{{ $in->id }}" id="">{{ $in->level }}</option>
+                                            @endforeach
+                                        </select>
+                                        <select class="form-control" name="inclusion" id="inclusion" onchange="showinclusion(this.value)">
+                                            <option value="" id=""></option>
+                                        </select>
                                     </div>
                                     <div class="form-group mb-1">
-                                        <label for="harga awal">Exclusion</label>
-                                        <div class="input-group control-group increment-exclusion" >
-                                            <textarea name="exclusion[]" id="" class="form-control"></textarea>
-                                            <div class="input-group-btn"> 
-                                            <button class="btn btn-success btn-exclusion" type="button"><i class="glyphicon glyphicon-plus"></i></button>
-                                            </div>
-                                        </div>
-                                        <div class="clone-exclusion hide" style="display: none">
-                                            <div class="control-group control-group-exclusion input-group" style="margin-top:10px">
-                                            <textarea name="exclusion[]" id="" class="form-control"></textarea>
-                                            <div class="input-group-btn"> 
-                                                <button class="btn btn-danger exclusion" type="button"><i class="glyphicon glyphicon-remove"></i></button>
-                                            </div>
-                                            </div>
-                                        </div>
+                                        <label for="exampleSelect1">Exclusion</label>
+                                        <select class="form-control mb-5" name="exclusion" onchange="showexclusion(this.value)">
+                                            <option value=""></option>
+                                            @foreach($exclusion as $ex)
+                                                <option value="{{ $ex->id }}" id="">{{ $ex->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <div class="form-group mb-1">
-                                        <label for="harga awal">Add Ons</label>
+                                        <label for="harga awal">Bring Items</label>
                                         <div class="input-group control-group increment-addons" >
-                                            <textarea name="add_ons[]" id="" class="form-control"></textarea>
+                                            <textarea name="barang[]" id="" class="form-control"></textarea>
                                             <div class="input-group-btn"> 
                                             <button class="btn btn-success btn-addons" type="button"><i class="glyphicon glyphicon-plus"></i></button>
                                             </div>
                                         </div>
                                         <div class="clone-addons hide" style="display: none">
                                             <div class="control-group control-group-addons input-group" style="margin-top:10px">
-                                            <textarea name="add_ons[]" id="" class="form-control"></textarea>
+                                            <textarea name="barang[]" id="" class="form-control"></textarea>
                                             <div class="input-group-btn"> 
                                                 <button class="btn btn-danger addons" type="button"><i class="glyphicon glyphicon-remove"></i></button>
                                             </div>
@@ -154,7 +146,7 @@
                     </div>
                     <div class="col-md-6">
                         <!--begin::Card-->
-                        <div class="card card-custom gutter-b example example-compact">
+                        <div class="card card-custom gutter-b example example-compact mb-10">
                             <div class="card-header">
                                 <h3 class="card-title">
                                     Jadwal Wisata
@@ -171,6 +163,13 @@
                                             @enderror
                                         </div>
                                         <div class="form-group mb-1">
+                                            <label for="image">Foto Kegiatan</label>
+                                            <input class="form-control" id="foto_kegiatan1" type="file" name="foto_kegiatan[]" accept="image/*" multiple>
+                                            @error('foto_kegiatan')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group mb-1">
                                             <label>jadwal</label>
                                             <textarea name="keterangan[]" id="keterangan1" class="form-control" required></textarea>
                                             @error('keterangan')
@@ -184,6 +183,13 @@
                                             <input type="text" class="form-control" name="day[]" id="day2" placeholder="Wisata.."/>
                                             @error('day')
                                             <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                         <div class="form-group mb-1">
+                                            <label for="image">Foto Kegiatan</label>
+                                            <input class="form-control" id="foto_kegiatan2" type="file" name="foto_kegiatan[]" accept="image/*" multiple>
+                                            @error('foto_kegiatan')
+                                                <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
                                         <div class="form-group mb-1">
@@ -203,6 +209,13 @@
                                             @enderror
                                         </div>
                                         <div class="form-group mb-1">
+                                            <label for="image">Foto Kegiatan</label>
+                                            <input class="form-control" id="foto_kegiatan3" type="file" name="foto_kegiatan[]" accept="image/*" multiple>
+                                            @error('foto_kegiatan')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group mb-1">
                                             <label>jadwal</label>
                                             <textarea name="keterangan3" id="keterangan[]" class="form-control"></textarea>
                                             @error('keterangan')
@@ -216,6 +229,13 @@
                                             <input type="text" class="form-control" name="day[]" id="day4" placeholder="Wisata.."/>
                                             @error('day')
                                             <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group mb-1">
+                                            <label for="image">Foto Kegiatan</label>
+                                            <input class="form-control" id="foto_kegiatan4" type="file" name="foto_kegiatan[]" accept="image/*" multiple>
+                                            @error('foto_kegiatan')
+                                                <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
                                         <div class="form-group mb-1">
@@ -235,6 +255,13 @@
                                             @enderror
                                         </div>
                                         <div class="form-group mb-1">
+                                            <label for="image">Foto Kegiatan</label>
+                                            <input class="form-control" id="foto_kegiatan5" type="file" name="foto_kegiatan[]" accept="image/*" multiple>
+                                            @error('foto_kegiatan')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group mb-1">
                                             <label>jadwal</label>
                                             <textarea class="form-control" name="keterangan[]" id="keterangan5"></textarea>
                                             @error('keterangan')
@@ -246,6 +273,30 @@
                                 </div>
 
                             <!--end::Form-->
+                        </div>
+                        <!--end::Card-->
+                        <!--begin::Card-->
+                        <div class="card card-custom gutter-b example example-compact mb-10" style="display: none;">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    Inclusion
+                                </h3>
+                            </div>
+                           <div class="card-body">
+
+                           </div>
+                        </div>
+                        <!--end::Card-->
+                        <!--begin::Card-->
+                        <div class="card card-custom gutter-b example example-compact mb-10" style="display: none;">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    Exclusion
+                                </h3>
+                            </div>
+                           <div class="card-body">
+
+                           </div>
                         </div>
                         <!--end::Card-->
                     </div>
@@ -300,6 +351,20 @@
     });
 </script>
 <script>
+    $(function(){
+        $('#level').on('change',function(){
+            axios.post("{{ route('inclusion_dropdown') }}",{id: $this.val()})
+            .then(function(response){
+                $('#inclusion').empty();
+
+                $.each(response.data, function(id, name){
+                    $('#inclusion').append(new Option(name,id))
+                })
+            });
+        });
+    });
+</script>
+<script>
    const day1 = document.getElementById('days1');
    const day2 = document.getElementById('days2');
    const day3 = document.getElementById('days3');
@@ -313,6 +378,10 @@
    const ket3 = document.getElementById('keterangan3');
    const ket4 = document.getElementById('keterangan4');
    const ket5 = document.getElementById('keterangan5');
+   const foto2 = document.getElementById('foto_kegiatan2');
+   const foto3 = document.getElementById('foto_kegiatan3');
+   const foto4 = document.getElementById('foto_kegiatan4');
+   const foto5 = document.getElementById('foto_kegiatan5');
     function showresult(str){
         if(str == "1"){
             day1.style.display = 'block';
@@ -343,6 +412,10 @@
             ket3.required = false;
             ket4.required = false;
             ket5.required = false;
+            foto2.required = true;
+            foto3.required = false;
+            foto4.required = false;
+            foto5.required = false;
         }else if(str == "3"){
             day1.style.display = 'block';
             day2.style.display = 'block';
@@ -357,6 +430,10 @@
             ket3.required = true;
             ket4.required = false;
             ket5.required = false;
+            foto2.required = true;
+            foto3.required = true;
+            foto4.required = false;
+            foto5.required = false;
         }else if(str == "4"){
             day1.style.display = 'block';
             day2.style.display = 'block';
@@ -367,10 +444,10 @@
             title3.required = true;
             title4.required = true;
             title5.required = false;
-            ket2.required = true;
-            ket3.required = true;
-            ket4.required = true;
-            ket5.required = false;
+            foto2.required = true;
+            foto3.required = true;
+            foto4.required = true;
+            foto5.required = false;
         }else if(str == "5"){
             day1.style.display = 'block';
             day2.style.display = 'block';
@@ -385,6 +462,11 @@
             ket3.required = true;
             ket4.required = true;
             ket5.required = true;
+            foto2.required = true;
+            foto3.required = true;
+            foto4.required = true;
+            foto5.required = true;
+            
         }
     }
 

@@ -34,7 +34,7 @@
                 </div>
 
                 <br><br>
-                <button style="border: 1px solid blue; background:white; ">Search</button>
+                <button type="submit" style="border: 1px solid blue; background:white; ">Search</button>
             </form>
               {{-- <div class="page__toggle">
                 <label class="toggle">
