@@ -15,6 +15,8 @@ class Wisata extends Model
         'lokasi',
         'inclusion',
         'exclusion',
+        'barang',
+        'foto_kegiatan',
         'add_ons',
         'day',
         'keterangan',
@@ -30,5 +32,13 @@ class Wisata extends Model
     
     public function faq(){
         return $this->hasMany('App\Models\Faq','wisata_id','id');
+    }
+
+    public function inclusion(){
+        return $this->belongsTo('App\Models\Inclusion');
+    }
+
+    public function exclusion(){
+        return $this->belongsTo('App\Models\Exclusion');
     }
 }

@@ -16,8 +16,12 @@ class Login
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user()){
-            return redirect()->back();
+        if(Auth::check()){
+            if(Auth::user()){
+                return redirect()->back();
+            }else{
+                return $next($request);
+            }
         }else{
             return $next($request);
         }
