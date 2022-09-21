@@ -141,7 +141,23 @@
                     </button>
                 </div>
                 <div class="answer" style="background: white;">
-                    <p>{!! nl2br($jk) !!}</p>
+                    <table cellspacing="10">
+                        <tr>
+                          <td>
+                            <div class="w3-content w3-section" style="max-width:500px">
+                                <img class="mySlides" src="{{ asset('images/baru1.jpg') }}" style="width:100%">
+                                <img class="mySlides" src="{{ asset('images/baru2.jpg') }}" style="width:100%">
+                                <img class="mySlides" src="{{ asset('images/bg-blog.jpg') }}" style="width:100%">
+                              </div>
+                          </td>
+                          <td> 
+                            <p>
+                                {!! nl2br($jk) !!}
+                            </p>
+                          </td>
+                        </tr>
+                      </table>
+
                 </div>
             </div>
             @endif
@@ -474,5 +490,20 @@
         document.querySelector(".animated_badge_5").classList.remove("hide");
         }, 4800);
         // Badge end
+        //image slider
+        var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}    
+  x[myIndex-1].style.display = "block";  
+  setTimeout(carousel, 2000); // Change image every 2 seconds
+}
     </script>
 @endsection

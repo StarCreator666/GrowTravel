@@ -19,7 +19,7 @@
                 <h3>Location</h3>
                 <div>
                   <select class="form-control" name="lokasi">
-                    <option value=""></option>
+                    <option value="">ALL</option>
                     @foreach($lokasis as $l)
                     <option value="{{ $l->name }}" @if($lokasi == $l->name) selected @endif>{{ $l->name }}</option>
                     @endforeach
@@ -30,7 +30,7 @@
                 <h3>Duration</h3>
                   <div>
                     <select class="form-control" name="hari">
-                      <option value="" @if($durasi == '') selected @endif></option>
+                      <option value="" @if($durasi == '') selected @endif>ALL</option>
                       <option value="1" @if($durasi == '1') selected @endif>1 hari</option>
                       <option value="2" @if($durasi == '2') selected @endif>2 hari</option>
                       <option value="3" @if($durasi == '3') selected @endif>3 hari</option>
@@ -41,39 +41,35 @@
                 <br><br>
                 <button type="submit" style="border: 1px solid blue; background:white; ">Search</button>
             </form>
-              {{-- <div class="page__toggle">
-                <label class="toggle">
-                  <input class="toggle__input" type="checkbox">
-                  <span class="toggle__label">
-                    <span class="toggle__text">Check Me!</span>
-                  </span>
-                </label>
-              </div> --}}
 
         </div>
     </section>
-<section class="best-sell" style="padding:20px 50px 50px 50px">
+    <section class="best-sell" style="padding:20px 50px 50px 50px">
 
-    <h1 class="heading">BEST-SELLERS</h1>
-    <h5 class="sub-heading" style="padding-bottom:10px;">The most popular packages to explore Mount Bromo & Ijen</h5>
+        <h1 class="heading">BEST-SELLERS</h1>
+        <h5 class="sub-heading" style="padding-bottom:10px;">The most popular packages to explore Mount Bromo & Ijen</h5>
+            <div class="box-container">
 
-        <div class="box-container">
-            @foreach($wisata as $w)
-            <div class="box" style="padding:0;">
-                <img src="{{ asset(''.$w->gambar) }}" style="border-radius:0%; width:300px; height:200px; border-radius:5px 5px 0 0" alt="">
-                <h3>{{ $w->judul }}</h3>
-                <p>Rp.{{ $w->harga_awal }}. - Rp.{{ $w->harga_akhir }}.</p>
-                <p>{{ $w->lokasi }}</p>
-                <p>{{ $w->hari}} Days</p>
-                <a href="{{ url('show/'.$w->judul) }}" class="btn">Book now</a>
+                @foreach($wisata as $w)
+                <div class="boxs" style="padding:0;">
+                  <div class="item" style="text-align:right; padding:1rem;">
+                    <img src="{{ asset(''.$w->gambar) }}" style="border-radius:0%; width:200px; height:133px; border-radius:5px 5px 0 0" alt="">
+                  </div>
+                  <div class="item" style="text-align:left; padding:1rem; margin-left:1rem;">
+                    <h3 style="margin: 10px">{{ $w->judul }}</h3>
+                    <p style="margin:10px"><i class="fas fa-map-marker-alt" style="padding-right: 2px;"></i> {{ $w->lokasi }} <i class="fas fa-stopwatch" style="padding-left: 7px;"></i> {{ $w->hari}} Days</p>
+                  </div>
+                  <div class="item"  style="padding:1rem;">
+                    <p style="margin-top: 3%;"><span class="heading" style="font-weight:600; font-size:2.3rem;">{{ $w->harga_awal }}$</span><span style=" font-size:1.3rem; font-weight:600; color:rgb(104, 113, 118);">/pax</span> {{-- .{{ $w->harga_akhir }}--}}.</p> 
+                    <a href="{{ url('show/'.$w->judul) }}" class="btn" style="margin-top: 5px;">Book now</a>
+                  </div>
+
+
+                </div>
+                @endforeach
             </div>
-            @endforeach
-        </div>
-        <div></div>
-
-
-
-</section>
+            <div></div>
+    </section>
 </main>
 
 @endsection

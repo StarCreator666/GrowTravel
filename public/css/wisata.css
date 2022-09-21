@@ -6,6 +6,7 @@
     background-attachment: fixed;
     height: 60vh;
 }
+
 .header {
     position: fixed;
     background: white;
@@ -41,23 +42,33 @@ main{
 }
 main .filter{
   float: left;
-  height: 100vh;
-  background: yellow;
-  margin-right: 0.5%;
+  height: fit-content;
+  background: rgb(242, 243, 243);
+  margin-top: 8%;
+  margin-left: 2%;
   padding: 2% 1%;
-  width: 15%;
+  width: 18%;
 }
 .best-sell .box-container {
     display: -ms-grid;
     display: grid;
     -ms-grid-columns: (minmax(20em, 1fr))[auto-fit];
-        grid-template-columns: repeat(auto-fit, minmax(23rem, 1fr));
+    grid-template-columns: repeat(auto-fit);
     gap: 1.5rem;
   }
   
   .best-sell .box-container .box {
     text-align: center;
     padding: 1rem;
+  }
+    
+  .best-sell .box-container .boxs {
+    text-align: center;
+    padding: 1rem;
+	background: rgb(242, 243, 243);
+	margin: 0 10%;
+	display: grid;
+	grid-template-columns: 200px 440px auto ;
   }
 
   .best-sell .heading {
@@ -347,6 +358,11 @@ main .filter{
         opacity: 1;
     }
 }
+/* SLIDER IMG */
+.mySlides {display:none;}
+.w3-content {width:200px;}
+.w3-button{width:20px; height:20; background:none !important;}
+/* end slider img */
 @media only screen and (max-width: 600px) {
  main .filter{
   width: 100%;
