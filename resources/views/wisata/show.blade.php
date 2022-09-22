@@ -117,81 +117,112 @@
 
         @php
             $jadwalday = explode('+',$wisata->day);  
-            $jadwalketerangan = explode('+',$wisata->keterangan);  
+            $jadwalketerangan = explode('+',$wisata->keterangan);
+            // dd(count($jadwalketerangan));
+            $gambarday = explode('+',$wisata->foto_kegiatan);
+            foreach($gambarday as $g){
+                $foto = explode(',',$g);
+            }
             $noinn = 1;
         @endphp
         <div class="jadwal">
             <h3 style="color: orange; font-size:22px; font-weight:600; padding-bottom:10px;">Itinerary</h3>
             @foreach($jadwalday as $jd)
-            @if($jd != null)
-            @foreach($jadwalketerangan as $jk)
-            @if($jk != null)
-            <div class="question-answer" >
-                <div class="question" style="background: rgba(128, 128, 128,0.1); padding: 0 10px;">
-                    <h3 class="title-question" style="font-size: 15px; font-weight:400;">
-                        <i class="fas fa-map-marker-alt" style="padding-right: 4px; color: #000"></i> Day {{ $noinn++ }}: {{ $jd }}
-                    </h3>
-                    <button class="question-btn">
-                        <span class="up-icon">
-                            <i class="fas fa-chevron-up"></i>
-                        </span>
-                        <span class="down-icon">
-                            <i class="fas fa-chevron-down"></i>
-                        </span>
-                    </button>
-                </div>
-                <div class="answer" style="background: white;">
-                    <table cellspacing="10">
-                        <tr>
-                          <td>
-                            <div class="w3-content w3-section" style="max-width:500px">
-                                <img class="mySlides" src="{{ asset('images/baru1.jpg') }}" style="width:100%">
-                                <img class="mySlides" src="{{ asset('images/baru2.jpg') }}" style="width:100%">
-                                <img class="mySlides" src="{{ asset('images/bg-blog.jpg') }}" style="width:100%">
-                              </div>
-                          </td>
-                          <td> 
-                            <p>
-                                {!! nl2br($jk) !!}
-                            </p>
-                          </td>
-                        </tr>
-                      </table>
+                @if($jd != null)
+                    <div class="question-answer" >
+                        <div class="question" style="background: rgba(128, 128, 128,0.1); padding: 0 10px;">
+                            <h3 class="title-question" style="font-size: 15px; font-weight:400;">
+                                <i class="fas fa-map-marker-alt" style="padding-right: 4px; color: #000"></i> Day {{ $noinn++ }}: {{ $jd }}
+                            </h3>
+                            <button class="question-btn">
+                                <span class="up-icon">
+                                    <i class="fas fa-chevron-up"></i>
+                                </span>
+                                <span class="down-icon">
+                                    <i class="fas fa-chevron-down"></i>
+                                </span>
+                            </button>
+                        </div>
+                        <div class="answer" style="background: white;">
+                            <table cellspacing="10">
+                                <tr>
+                                    <td>
+                                        @foreach($foto as $ft)
+                                            <div class="w3-content w3-section" style="max-width:500px">
+                                                <img class="mySlides" src="{{ asset(''.$ft) }}" style="width:100%">
+                                            </div>
+                                        @endforeach
+                                    </td>
+                                    <td> 
+                                        @foreach($jadwalketerangan as $jk)
+                                            <p>
+                                                {!! nl2br($jk) !!}
+                                            </p>
+                                        @endforeach
+                                    </td>
+                                </tr>
+                            </table>
 
-                </div>
-            </div>
-            @endif
-            @endforeach
-            @endif
+                        </div>
+                    </div>
+                @endif
             @endforeach
             <br>
             <hr width="90%">
             <h3 style="color: orange; font-size:22px; font-weight:600; padding:10px 0;">Inclusions</h3>
+            <div>
+                <button onclick="inclusionb();">Bronze</button>
+                <button onclick="inclusions();">Silver</button>
+                <button onclick="inclusiong();">Gold</button>
+                <button onclick="inclusionl();">Luxury</button>
+            </div>
             @php
-                $inclusion = explode(',',$wisata->inclusion);  
+                $inclusions = explode('=',$wisata->inclusion);
+                if(count($inclusions) == 4){
+                    $in = $inclusions[0];
+                    $inc = $inclusions[1];
+                    $incs = $inclusions[2];
+                    $inclu = $inclusions[3];
+                }
                 $exclusion = explode(',',$wisata->exclusion);  
                 $addons = explode(',',$wisata->add_ons);  
                 $noin = 1;
                 $noex = 1;
                 $noan = 1;
             @endphp
-             @foreach($inclusion as $in)
-             @if($in != null)
-                 <p style="font-size: 15px; font-weight:300;"><i class="fas fa-check fa-xs" style="color: rgb(35, 190, 35); padding-right:3px;"></i> {{ $in }}</p>
-                 @endif
-             @endforeach
-             <h3 style="color: orange; font-size:22px; font-weight:600; padding:10px 0;">Exclusions</h3>
-             @foreach($exclusion as $ex)
-             @if($ex != null)
-                 <p style="font-size: 15px; font-weight:300;"><i class="fas fa-times fa-xs" style="color:red; padding-right:3px;"></i> {{ $ex }}</p>
-                 @endif
-             @endforeach
-             <h3 style="color: orange; font-size:22px; font-weight:600; padding:10px 0;">Add-ons (optional):</h3>
-             @foreach($addons as $ao)
-             @if($ao != null)
-                 <p style="font-size: 15px; font-weight:300;"><i class="fas fa-plus fa-xs" style="color:rgb(0, 183, 255); padding-right:3px;"></i> {{ $ao }}</p>
-                 @endif
-             @endforeach
+            <p style="font-size: 15px; font-weight:300;" id="inclusion-none">PILIH INCLUSION ANDA</p>
+            @foreach(explode(',',$in) as $inclusion)
+                <div class="div" id="bronze" style="display: none;">
+                    <p style="font-size: 15px; font-weight:300;"><i class="fas fa-check fa-xs" style="color: rgb(35, 190, 35); padding-right:3px;"></i> {{ $inclusion }}</p>
+                </div>
+            @endforeach
+            @foreach(explode(',',$inc) as $inclusion)
+                <div class="div" id="silver" style="display: none;">
+                    <p style="font-size: 15px; font-weight:300;"><i class="fas fa-check fa-xs" style="color: rgb(35, 190, 35); padding-right:3px;"></i> {{ $inclusion }}</p>
+                </div>
+            @endforeach
+            @foreach(explode(',',$incs) as $inclusion)
+                <div class="div" id="gold" style="display: none;">
+                    <p style="font-size: 15px; font-weight:300;"><i class="fas fa-check fa-xs" style="color: rgb(35, 190, 35); padding-right:3px;"></i> {{ $inclusion }}</p>
+                </div>
+            @endforeach
+            @foreach(explode(',',$inclu) as $inclusion)
+                <div class="div" id="luxury" style="display: none;">
+                    <p style="font-size: 15px; font-weight:300;"><i class="fas fa-check fa-xs" style="color: rgb(35, 190, 35); padding-right:3px;"></i> {{ $inclusion }}</p>
+                </div>
+            @endforeach
+                <h3 style="color: orange; font-size:22px; font-weight:600; padding:10px 0;">Exclusions</h3>
+            @foreach($exclusion as $ex)
+                @if($ex != null)
+                    <p style="font-size: 15px; font-weight:300;"><i class="fas fa-times fa-xs" style="color:red; padding-right:3px;"></i> {{ $ex }}</p>
+                @endif
+            @endforeach
+                <h3 style="color: orange; font-size:22px; font-weight:600; padding:10px 0;">Add-ons (optional):</h3>
+            @foreach($addons as $ao)
+                @if($ao != null)
+                    <p style="font-size: 15px; font-weight:300;"><i class="fas fa-plus fa-xs" style="color:rgb(0, 183, 255); padding-right:3px;"></i> {{ $ao }}</p>
+                @endif
+            @endforeach
         </div>
     </div>
     <div class="right">
@@ -459,6 +490,8 @@
     </div>
     <h1 style="clear: both"></h1>
 </div>
+
+
     <script>
         const questions = document.querySelectorAll('.question-answer');
             questions.forEach(function(question) {
@@ -490,20 +523,57 @@
         document.querySelector(".animated_badge_5").classList.remove("hide");
         }, 4800);
         // Badge end
-        //image slider
+    </script>
+    <script>
+        // image slider
         var myIndex = 0;
-carousel();
+        carousel();
 
-function carousel() {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";  
-  }
-  myIndex++;
-  if (myIndex > x.length) {myIndex = 1}    
-  x[myIndex-1].style.display = "block";  
-  setTimeout(carousel, 2000); // Change image every 2 seconds
-}
+        function carousel() {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";  
+            }
+            myIndex++;
+            if (myIndex > x.length) {myIndex = 1}    
+            x[myIndex-1].style.display = "block";  
+            setTimeout(carousel, 3000); // Change image every 3 seconds
+        }
+    </script>
+    <script>
+        var bronze = document.getElementById('bronze');
+        var silver = document.getElementById('silver');
+        var gold = document.getElementById('gold');
+        var luxury = document.getElementById('luxury');
+        var note = document.getElementById('inclusion-none');
+        function inclusionb(){
+            bronze.style.display = 'block';
+            silver.style.display = 'none';
+            gold.style.display = 'none';
+            luxury.style.display = 'none';
+            note.style.display = 'none';
+        }
+        function inclusions(){
+            bronze.style.display = 'none';
+            silver.style.display = 'block';
+            gold.style.display = 'none';
+            luxury.style.display = 'none';
+            note.style.display = 'none';
+        }
+        function inclusiong(){
+            bronze.style.display = 'none';
+            silver.style.display = 'none';
+            gold.style.display = 'block';
+            luxury.style.display = 'none';
+            note.style.display = 'none';
+        }
+        function inclusionl(){
+            bronze.style.display = 'none';
+            silver.style.display = 'none';
+            gold.style.display = 'none';
+            luxury.style.display = 'block';
+            note.style.display = 'none';
+        }
     </script>
 @endsection
