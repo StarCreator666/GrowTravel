@@ -65,12 +65,13 @@ class WisataController extends Controller
             'harga_awal.numeric' => 'Harga harus diisi angka',
             'harga_akhir.required' => 'Harga harus diisi',
             'harga_akhir.numeric' => 'Harga harus diisi angka',
-        ]
-    );
+        ]);
+
+        $no = 1;
 
         if($request->hasFile('gambar')){
             $file = $request->gambar;
-            $fileName = $file->move("image-travel/", date('YmdHis').'.'. $file->getClientOriginalExtension());
+            $fileName = $file->move("image-travel/", date('YmdHis'). $no++ .'.'. $file->getClientOriginalExtension());
         }
         if($request->file('foto_kegiatan1')){
             $preview = $request->file('foto_kegiatan1');
@@ -91,7 +92,7 @@ class WisataController extends Controller
             $preview2 = $request->file('foto_kegiatan2');
             foreach($preview2 as $p){
                 $lokasiPreview = 'tempat-wisata/';
-                $Preview2 = $lokasiPreview . date('YmdHis') . "." . $p->getClientOriginalExtension();
+                $Preview2 = $lokasiPreview . date('YmdHis') . $no++ . "." . $p->getClientOriginalExtension();
                 if($p->getClientOriginalExtension() == 'png' || $p->getClientOriginalExtension() == 'jpeg' || $p->getClientOriginalExtension() == 'jpg' || $p->getClientOriginalExtension() == 'webm' || $p->getClientOriginalExtension() == 'mp4'){
                     $p->move(public_path($lokasiPreview), $Preview2);
                     $files2[] = $Preview2;
@@ -106,7 +107,7 @@ class WisataController extends Controller
             $preview3 = $request->file('foto_kegiatan3');
             foreach($preview3 as $p){
                 $lokasiPreview = 'tempat-wisata/';
-                $Preview3 = $lokasiPreview . date('YmdHis') . "." . $p->getClientOriginalExtension();
+                $Preview3 = $lokasiPreview . date('YmdHis') . $no++ . "." . $p->getClientOriginalExtension();
                 if($p->getClientOriginalExtension() == 'png' || $p->getClientOriginalExtension() == 'jpeg' || $p->getClientOriginalExtension() == 'jpg' || $p->getClientOriginalExtension() == 'webm' || $p->getClientOriginalExtension() == 'mp4'){
                     $p->move(public_path($lokasiPreview), $Preview3);
                     $files3[] = $Preview3;
@@ -121,7 +122,7 @@ class WisataController extends Controller
             $preview4 = $request->file('foto_kegiatan4');
             foreach($preview4 as $p){
                 $lokasiPreview = 'tempat-wisata/';
-                $Preview4 = $lokasiPreview . date('YmdHis') . "." . $p->getClientOriginalExtension();
+                $Preview4 = $lokasiPreview . date('YmdHis') . $no++ . "." . $p->getClientOriginalExtension();
                 if($p->getClientOriginalExtension() == 'png' || $p->getClientOriginalExtension() == 'jpeg' || $p->getClientOriginalExtension() == 'jpg' || $p->getClientOriginalExtension() == 'webm' || $p->getClientOriginalExtension() == 'mp4'){
                     $p->move(public_path($lokasiPreview), $Preview4);
                     $files4[] = $Preview4;
@@ -135,7 +136,7 @@ class WisataController extends Controller
             $preview5 = $request->file('foto_kegiatan5');
             foreach($preview5 as $p){
                 $lokasiPreview = 'tempat-wisata/';
-                $Preview5 = $lokasiPreview . date('YmdHis') . "." . $p->getClientOriginalExtension();
+                $Preview5 = $lokasiPreview . date('YmdHis') . $no++ . "." . $p->getClientOriginalExtension();
                 if($p->getClientOriginalExtension() == 'png' || $p->getClientOriginalExtension() == 'jpeg' || $p->getClientOriginalExtension() == 'jpg' || $p->getClientOriginalExtension() == 'webm' || $p->getClientOriginalExtension() == 'mp4'){
                     $p->move(public_path($lokasiPreview), $Preview5);
                     $files5[] = $Preview5;
