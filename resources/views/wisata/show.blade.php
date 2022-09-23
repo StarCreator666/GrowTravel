@@ -194,7 +194,6 @@
                     $inc = $inclusions[1];
                     $incs = $inclusions[2];
                     $inclu = $inclusions[3];
-                    // dd($inclu);
                 }
                 $exclusion = explode(',',$wisata->exclusion);
                 $addons = explode(',',$wisata->add_ons);  
@@ -425,8 +424,8 @@
                                     <rect x="23" y="60" width="8" height="40" fill="#ABC7F9" />
                                     <rect x="43" y="60" width="8" height="40" fill="#ABC7F9" />
                                 </g>
-                                <circle cx="37.5" cy="37.5" r="33.5" fill="#C0C6CF" stroke="#C0C6CF" stroke-width="8" />
-                                <circle class="badge_circle" cx="37.5" cy="37.5" r="29.5" fill="#C0C6CF" stroke="#EAEDF2" stroke-width="4" />
+                                <circle cx="37.5" cy="37.5" r="33.5" fill="#C0C6CF" stroke="#FCD977" stroke-width="8" />
+                                <circle class="badge_circle" cx="37.5" cy="37.5" r="29.5" fill="#FCD977" stroke="#FFA826" stroke-width="4" />
                                 <path class="badge_number"
                                     d="M32.72 40.88C32.9 43.36 34.62 45.26 37.64 45.26C40.72 45.26 42.66 43.42 42.66 40.78C42.66 39.02 41.72 37.68 40.02 37.12C41.16 36.52 41.94 35.5 41.94 34.16C41.94 31.94 40.28 30.42 37.7 30.42C35.12 30.42 33.48 32.04 33.42 34.26H35.72C35.84 33.14 36.6 32.5 37.64 32.5C38.64 32.5 39.46 33.06 39.48 34.24C39.48 35.76 38.24 36.24 36.66 36.24V38.24H37.22C38.86 38.24 40.14 38.96 40.14 40.7C40.14 42.06 39.2 43.16 37.7 43.16C36.14 43.16 35.32 42.24 35.16 40.88H32.72Z"
                                     fill="white" />

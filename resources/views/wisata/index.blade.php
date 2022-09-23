@@ -57,7 +57,7 @@
                   </div>
                   <div class="item" style="text-align:left; padding:1rem; margin-left:1rem;">
                     <h3 style="margin: 10px">{{ $w->judul }}</h3>
-                    <p style="margin:10px"><i class="fas fa-map-marker-alt" style="padding-right: 2px;"></i> {{ $w->lokasi }} <i class="fas fa-stopwatch" style="padding-left: 7px;"></i> {{ $w->hari}} Days</p>
+                    <p style="margin:10px; font-size:13px;"><i class="fas fa-map-marker-alt" style="padding-right: 2px;"></i> {{ $w->lokasi }} <i class="fas fa-stopwatch" style="padding-left: 7px;"></i> {{ $w->hari}} Days</p>
                   </div>
                   <div class="item"  style="padding:1rem;">
                     <p style="margin-top: 3%;"><span class="heading" style="font-weight:600; font-size:2.3rem;">{{ $w->harga_awal }}$</span><span style=" font-size:1.3rem; font-weight:600; color:rgb(104, 113, 118);">/pax</span> {{-- .{{ $w->harga_akhir }}--}}.</p> 
