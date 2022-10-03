@@ -31,8 +31,10 @@ Route::get('/', function () {
 Route::get('/wisata',[WisataController::class, 'index'])->name('user.wisata');
 Route::get('/show/{judul}',[WisataController::class, 'detail']);
 // add 
-Route::view('/add', 'add');
-Route::view('/addm', 'addCars');
+Route::view('/show', 'wisata.showbaru');
+Route::view('/cart', 'wisata.cart');
+Route::view('/payment', 'wisata.payment');
+Route::view('/confirmation', 'wisata.confirmation');
 Route::post('/add-mobil',[MobilController::class,'add_post'])->name('add.mobil');
 // Mobil route
 Route::get('/cars',[MobilController::class, 'index']);

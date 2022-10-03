@@ -1,50 +1,67 @@
 <!-- footer section starts  -->
 
-<section class="footer">
-
-    <div class="box-container">
-
-        <div class="box">
-            <h3>quick links</h3>
-            <a href="#home">home</a>
-            <a href="#about">about</a>
-            <a href="#shop">shop</a>
-            <a href="#packages">packages</a>
-            <a href="#reviews">reviews</a>
-            <a href="#blogs">blogs</a>
-        </div>
-
-        <div class="box">
-            <h3>extra links</h3>
-            <a href="#">my account</a>
-            <a href="#">my order</a>
-            <a href="#">my wishlist</a>
-            <a href="#">ask questions</a>
-            <a href="#">terms of use</a>
-            <a href="#">privacy policy</a>
-        </div>
-
-        <div class="box">
-            <h3>contact info</h3>
-            <a href="#"> <i class="fas fa-phone"></i> +089-456-7890 </a>
-            <a href="#"> <i class="fas fa-phone"></i> +085-222-3333 </a>
-            <a href="#"> <i class="fas fa-envelope"></i> contoh@gmail.com </a>
-            <a href="#"> <i class="fas fa-map"></i> Malang, Indonesia - 400104 </a>
-        </div>
-
-        <div class="box">
-            <h3>follow us</h3>
-            <a href="#"> <i class="fab fa-facebook-f"></i> facebook </a>
-            <a href="#"> <i class="fab fa-twitter"></i> twitter </a>
-            <a href="#"> <i class="fab fa-instagram"></i> instagram </a>
-            <a href="#"> <i class="fab fa-linkedin"></i> linkedin </a>
-            <a href="#"> <i class="fab fa-github"></i> github </a>
-        </div>
-
-    </div>
-
-    <div class="credit"><span>Growin Travel</span> | all rights reserved!</div>
-
-</section>
-
-<!-- footer section ends -->
+    <footer class="revealed">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>Need help?</h3>
+                    <a href="tel://004542344599" id="phone">+45 423 445 99</a>
+                    <a href="mailto:help@citytours.com" id="email_footer">help@citytours.com</a>
+                </div>
+                <div class="col-md-3">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Login</a></li>
+                        <li><a href="#">Register</a></li>
+                         <li><a href="#">Terms and condition</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h3>Discover</h3>
+                    <ul>
+                        <li><a href="#">Community blog</a></li>
+                        <li><a href="#">Tour guide</a></li>
+                        <li><a href="#">Wishlist</a></li>
+                         <li><a href="#">Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h3>Settings</h3>
+                    <div class="styled-select">
+                        <select name="lang" id="lang">
+                            <option value="English" selected>English</option>
+                            <option value="French">French</option>
+                            <option value="Spanish">Spanish</option>
+                            <option value="Russian">Russian</option>
+                        </select>
+                    </div>
+                    <div class="styled-select">
+                        <select name="currency" id="currency">
+                            <option value="USD" selected>USD</option>
+                            <option value="EUR">EUR</option>
+                            <option value="GBP">GBP</option>
+                            <option value="RUB">RUB</option>
+                        </select>
+                    </div>
+                </div>
+            </div><!-- End row -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="social_footer">
+                        <ul>
+                            <li><a href="#"><i class="icon-facebook"></i></a></li>
+                            <li><a href="#"><i class="icon-twitter"></i></a></li>
+                            <li><a href="#"><i class="icon-google"></i></a></li>
+                            <li><a href="#"><i class="icon-instagram"></i></a></li>
+                            <li><a href="#"><i class="icon-pinterest"></i></a></li>
+                            <li><a href="#"><i class="icon-vimeo"></i></a></li>
+                            <li><a href="#"><i class="icon-youtube-play"></i></a></li>
+                        </ul>
+                        <p>© Citytours 2022</p>
+                    </div>
+                </div>
+            </div><!-- End row -->
+        </div><!-- End container -->
+    </footer><!-- End footer -->

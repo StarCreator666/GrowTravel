@@ -45,6 +45,12 @@ class WisataController extends Controller
         return view('wisata.show')->with(compact('wisata'));
     }
 
+    public function detail2(){
+        $wisata = Wisata::all();
+
+        return view('admin.wisata.index')->with(compact('wisata'));
+    }
+
     public function add_post(Request $request){
         $request->validate([
             'gambar' => 'required|mimes:jpeg,jpg,png',

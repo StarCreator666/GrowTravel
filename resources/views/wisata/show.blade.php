@@ -77,7 +77,7 @@
         text-align: center;
     }
     .card-level:hover{
-        background: red !important;
+        background: #F06100 !important;
     }
     .btn-lvl:focus{
         outline: none;
@@ -154,15 +154,15 @@
                         <div class="answer" style="background: white;">
                             <table cellspacing="10">
                                 <tr>
-                                    <td>
+                                    <td><div class="w3-content w3-section" style="max-width:500px">
                                         @foreach($gambarday as $foto)
-                                            <div class="w3-content w3-section" style="max-width:500px">
-                                                @foreach(explode(',',$foto) as $ft)
-                                               
+                                        @if($foto != null)
+                                            
+                                                @foreach(explode(',',$foto) as $ft)          
                                                 <img class="mySlides" src="{{ asset(''.$ft) }}" style="width:100%">
                                                 @endforeach
-                                            </div>
-                                        @endforeach
+                                        @endif
+                                        @endforeach </div>
                                     </td>
                                     <td> 
                                         @foreach($jadwalketerangan as $jk)
@@ -181,12 +181,12 @@
             <br>
             <hr width="90%">
             <h3 style="color: orange; font-size:22px; font-weight:600; padding:10px 0;">Inclusions</h3>
-            <div>
+            {{-- <div>
                 <button onclick="inclusionb();">Bronze</button>
                 <button onclick="inclusions();">Silver</button>
                 <button onclick="inclusiong();">Gold</button>
                 <button onclick="inclusionl();">Luxury</button>
-            </div>
+            </div> --}}
             @php
                 $inclusions = explode('=',$wisata->inclusion);
                 if(count($inclusions) == 4){
@@ -201,7 +201,309 @@
                 $noex = 1;
                 $noan = 1;
             @endphp
-            <p style="font-size: 15px; font-weight:300;" id="inclusion-none">PILIH INCLUSION ANDA</p>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                            Choose your Inclusion
+                         </button>
+                         
+                         <!-- Modal -->
+                         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                             <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+                             <div class="modal-content" style="background-color: grey;">
+                                 <div class="modal-header">
+                                 <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                     <span aria-hidden="true">&times;</span>
+                                 </button>
+                                 </div>
+                                 <div class="modal-body">
+                                     <div class="badges">
+                                         <div class="card-level" style="height: 75vh; background:#ffffff; border-radius: 20px; margin:0.5% 1% 0.5% 0.8%;width: 264px;">
+                                             <button class="btn-lvl" onclick="inclusionb();" data-dismiss="modal" style=" background: none; cursor:pointer;">
+                                                 <div class="animated_badge animated_badge_1 hide" style="margin: 24px 50px 24px 55px;">
+                                                     <div class="animated_stars">
+                                                         <div class="animated_star plus"></div>
+                                                         <div class="animated_star donut yellow"></div>
+                                                         <div class="animated_star plus"></div>
+                                                         <div class="animated_star donut"></div>
+                                                         <div class="animated_star plus yellow"></div>
+                                                     </div>
+                                                     <svg class="animated_badge_svg" width="75" height="100" viewBox="0 0 75 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                         <path class="badge_ribbon left"
+                                                             d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
+                                                             fill="#A5ACB9" />
+                                                         <path class="badge_ribbon left"
+                                                             d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
+                                                             fill="#CD7F32" />
+                                                         <path class="badge_ribbon left"
+                                                             d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
+                                                             fill="url(#paint0_linear)" />
+                                                         <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="16" y="57" width="44" height="43">
+                                                             <path
+                                                                 d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
+                                                                 fill="#999999" />
+                                                             <path
+                                                                 d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
+                                                                 fill="url(#paint1_linear)" />
+                                                         </mask>
+                                                         <g class="badge_ribbon left" mask="url(#mask0)">
+                                                             <rect x="30" y="60" width="15" height="40" fill="#EAEDF2" />
+                                                         </g>
+                                                         <circle class="badge_circle" cx="37.5" cy="37.5" r="33.5" fill="#CD7F32" stroke="#C0C6CF" stroke-width="8" />
+                                                         <path class="badge_number" d="M36.272 45H38.772V30.7H36.572C36.332 32.28 35.292 32.82 32.832 32.88V34.78H36.272V45Z" fill="white" />
+                                                         <defs>
+                                                             <linearGradient id="paint0_linear" x1="38" y1="57" x2="38" y2="89.5" gradientUnits="userSpaceOnUse">
+                                                                 <stop stop-color="#616468" />
+                                                                 <stop offset="1" stop-color="#A5ACB9" stop-opacity="0" />
+                                                             </linearGradient>
+                                                             <linearGradient id="paint1_linear" x1="38" y1="57" x2="38" y2="89.5" gradientUnits="userSpaceOnUse">
+                                                                 <stop stop-color="#27539F" />
+                                                                 <stop offset="1" stop-color="#71A1F4" stop-opacity="0" />
+                                                             </linearGradient>
+                                                         </defs>
+                                                     </svg>
+                                                 </div>
+                                                 <h1>Bronze</h1>
+                                                 <p style="margin-bottom: 3px;">This tier includes the following services:</p>
+                                                 <ul style="text-align: left; list-style-position: inside; height:37vh; padding-left:2%;">
+                                                     @foreach(explode(',',$in) as $inclusionb)
+                                                     @if($inclusionb != null)
+                                                     <li><b> {{ $inclusionb }}</b></li>
+                                                     @endif
+                                                     @endforeach
+                                                 </ul>
+                                             </button>
+                                             
+                                         </div>  
+                                         <div class="card-level" style="height: 75vh; background:#ffffff; border-radius: 20px; margin:0.5% 1% 0.5% 0;width: 264px;">
+                                             <button class="btn-lvl" onclick="inclusions();" data-dismiss="modal" style=" background: none; cursor:pointer;">
+                                                 <div class="animated_badge animated_badge_2 hide" style="margin: 24px 50px 24px 55px;">
+                                                     <div class="animated_stars">
+                                                         <div class="animated_star plus"></div>
+                                                         <div class="animated_star donut yellow"></div>
+                                                         <div class="animated_star plus"></div>
+                                                         <div class="animated_star donut"></div>
+                                                         <div class="animated_star plus yellow"></div>
+                                                     </div>
+                                                     <svg class="animated_badge_svg" width="75" height="100" viewBox="0 0 75 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                         <path class="badge_ribbon"
+                                                             d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
+                                                             fill="#71A1F4" />
+                                                         <path class="badge_ribbon"
+                                                             d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
+                                                             fill="#71A1F4" />
+                                                         <path class="badge_ribbon"
+                                                             d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
+                                                             fill="url(#paint0_linear)" />
+                                                         <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="16" y="57" width="44" height="43">
+                                                             <path
+                                                                 d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
+                                                                 fill="#71A1F4" />
+                                                             <path
+                                                                 d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
+                                                                 fill="url(#paint1_linear)" />
+                                                         </mask>
+                                                         <g class="badge_ribbon" mask="url(#mask0)">
+                                                             <rect x="30" y="60" width="15" height="40" fill="#ABC7F9" />
+                                                         </g>
+                                                         <circle class="badge_circle" cx="37.5" cy="37.5" r="33.5" fill="#71A1F4" stroke="#CEDCF5" stroke-width="8" />
+                                                         <path class="badge_number"
+                                                             d="M41.1783 45V42.86H35.0183C37.2183 40.82 41.1783 38.44 41.1783 34.8C41.1783 32.3 39.3983 30.42 36.4383 30.42C33.3583 30.42 31.6983 32.54 31.6983 35.14C31.6983 35.18 31.7183 35.22 31.7183 35.28H34.0983C34.1183 33.76 34.8383 32.62 36.4383 32.62C37.8183 32.62 38.6383 33.52 38.6383 34.86C38.6383 36.22 37.8583 37.38 36.0583 39.04C34.3783 40.62 31.8183 42.92 31.8183 42.92V45H41.1783Z"
+                                                             fill="white" />
+                                                         <defs>
+                                                             <linearGradient id="paint0_linear" x1="38" y1="57" x2="38" y2="89.5" gradientUnits="userSpaceOnUse">
+                                                                 <stop stop-color="#27539F" />
+                                                                 <stop offset="1" stop-color="#71A1F4" stop-opacity="0" />
+                                                             </linearGradient>
+                                                             <linearGradient id="paint1_linear" x1="38" y1="57" x2="38" y2="89.5" gradientUnits="userSpaceOnUse">
+                                                                 <stop stop-color="#27539F" />
+                                                                 <stop offset="1" stop-color="#71A1F4" stop-opacity="0" />
+                                                             </linearGradient>
+                                                         </defs>
+                                                     </svg>
+                                                 </div>
+                                                 <h1>Silver</h1>
+                                                 <p style="margin-bottom: 3px;">This tier includes the following services:</p>
+                                                 <ul style="text-align: left; list-style-position: inside; height:37vh; padding-left:2%;">
+                                                     <li><b> All in Bronze</b></li>
+                                                     @foreach(explode(',',$inc) as $inclusions)
+                                                     @if($inclusions != null)
+                                                     <li><b> {{ $inclusions }}</b></li>
+                                                     @endif
+                                                     @endforeach
+                                                 </ul>
+                                             </button>
+                                             
+                                         </div>
+                                         <div class="card-level" style="height: 75vh; background:#ffffff; border-radius: 20px; margin:0.5% 1% 0.5% 0;width: 264px;" >
+                                             <button class="btn-lvl" onclick="inclusiong();" data-dismiss="modal" style=" background: none; cursor:pointer;">
+                                                 <div class="animated_badge animated_badge_3 hide" style="margin: 24px 50px 24px 55px;">
+                                                     <div class="animated_stars">
+                                                         <div class="animated_star plus"></div>
+                                                         <div class="animated_star donut yellow"></div>
+                                                         <div class="animated_star plus"></div>
+                                                         <div class="animated_star donut"></div>
+                                                         <div class="animated_star plus yellow"></div>
+                                                     </div>
+                                                     <svg class="animated_badge_svg" width="75" height="100" viewBox="0 0 75 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                         <path class="badge_ribbon"
+                                                             d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
+                                                             fill="#71A1F4" />
+                                                         <path class="badge_ribbon"
+                                                             d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
+                                                             fill="#71A1F4" />
+                                                         <path class="badge_ribbon"
+                                                             d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
+                                                             fill="url(#paint0_linear)" />
+                                                         <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="16" y="57" width="44" height="43">
+                                                             <path
+                                                                 d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
+                                                                 fill="#71A1F4" />
+                                                             <path
+                                                                 d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
+                                                                 fill="url(#paint1_linear)" />
+                                                         </mask>
+                                                         <g class="badge_ribbon" mask="url(#mask0)">
+                                                             <rect x="23" y="60" width="8" height="40" fill="#ABC7F9" />
+                                                             <rect x="43" y="60" width="8" height="40" fill="#ABC7F9" />
+                                                         </g>
+                                                         <circle cx="37.5" cy="37.5" r="33.5" fill="#C0C6CF" stroke="#FCD977" stroke-width="8" />
+                                                         <circle class="badge_circle" cx="37.5" cy="37.5" r="29.5" fill="#FCD977" stroke="#FFA826" stroke-width="4" />
+                                                         <path class="badge_number"
+                                                             d="M32.72 40.88C32.9 43.36 34.62 45.26 37.64 45.26C40.72 45.26 42.66 43.42 42.66 40.78C42.66 39.02 41.72 37.68 40.02 37.12C41.16 36.52 41.94 35.5 41.94 34.16C41.94 31.94 40.28 30.42 37.7 30.42C35.12 30.42 33.48 32.04 33.42 34.26H35.72C35.84 33.14 36.6 32.5 37.64 32.5C38.64 32.5 39.46 33.06 39.48 34.24C39.48 35.76 38.24 36.24 36.66 36.24V38.24H37.22C38.86 38.24 40.14 38.96 40.14 40.7C40.14 42.06 39.2 43.16 37.7 43.16C36.14 43.16 35.32 42.24 35.16 40.88H32.72Z"
+                                                             fill="white" />
+                                                         <defs>
+                                                             <linearGradient id="paint0_linear" x1="38" y1="57" x2="38" y2="89.5" gradientUnits="userSpaceOnUse">
+                                                                 <stop stop-color="#27539F" />
+                                                                 <stop offset="1" stop-color="#71A1F4" stop-opacity="0" />
+                                                             </linearGradient>
+                                                             <linearGradient id="paint1_linear" x1="38" y1="57" x2="38" y2="89.5" gradientUnits="userSpaceOnUse">
+                                                                 <stop stop-color="#27539F" />
+                                                                 <stop offset="1" stop-color="#71A1F4" stop-opacity="0" />
+                                                             </linearGradient>
+                                                         </defs>
+                                                     </svg>
+                                                 </div>
+                                                 <h1>Gold</h1>
+                                                 <p style="margin-bottom: 3px;">This tier includes the following services:</p>
+                                                 <ul style="text-align: left; list-style-position: inside; height:37vh; padding-left:2%;">
+                                                     <li><b> All in Silver</b></li>
+                                                     @foreach(explode(',',$incs) as $inclusiong)
+                                                     @if($inclusiong != null)
+                                                     <li><b> {{ $inclusiong }}</b></li>
+                                                     @endif
+                                                     @endforeach
+                                                 </ul>
+                                             </button>
+                                             
+                                         </div>
+                                         <div class="card-level" style="height: 75vh; background:#ffffff; border-radius: 20px; margin:0.5% 0.5% 0.5% 0;width: 264px;">
+                                             <button class="btn-lvl" onclick="inclusionl();" data-dismiss="modal" style=" background: none; cursor:pointer;">
+                                                 <div class="animated_badge animated_badge_5 hide" style="margin: 24px 50px 24px 55px;">
+                                                     <div class="animated_stars">
+                                                         <div class="animated_star plus"></div>
+                                                         <div class="animated_star donut yellow"></div>
+                                                         <div class="animated_star plus"></div>
+                                                         <div class="animated_star donut"></div>
+                                                         <div class="animated_star plus yellow"></div>
+                                                     </div>
+                                                     <svg class="animated_badge_svg" width="84" height="99" viewBox="0 0 84 99" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                         <path class="badge_ribbon"
+                                                             d="M0.761166 82.9447L17.3041 50.8886C17.5574 50.3979 18.1606 50.2053 18.6513 50.4586L43.875 63.4756C44.3658 63.7289 44.5583 64.332 44.305 64.8228L27.7788 96.8466C27.4294 97.5236 26.4817 97.5769 26.0586 96.9435L17.8756 84.694C17.6881 84.4133 17.3716 84.2461 17.0341 84.2495L1.65981 84.4033C0.906487 84.4108 0.415676 83.6142 0.761166 82.9447Z"
+                                                             fill="#F04152" />
+                                                         <path class="badge_ribbon"
+                                                             d="M0.761166 82.9447L17.3041 50.8886C17.5574 50.3979 18.1606 50.2053 18.6513 50.4586L43.875 63.4756C44.3658 63.7289 44.5583 64.332 44.305 64.8228L27.7788 96.8466C27.4294 97.5236 26.4817 97.5769 26.0586 96.9435L17.8756 84.694C17.6881 84.4133 17.3716 84.2461 17.0341 84.2495L1.65981 84.4033C0.906487 84.4108 0.415676 83.6142 0.761166 82.9447Z"
+                                                             fill="url(#paint0_linear)" />
+                                                         <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="1" y="50" width="44" height="46">
+                                                             <path
+                                                                 d="M3.80623 77.0441L15.4697 54.4432C16.7361 51.9893 19.752 51.0266 22.2059 52.293L40.3204 61.6412C42.7743 62.9076 43.737 65.9235 42.4707 68.3774L30.8904 90.817C29.1437 94.2016 24.4052 94.4685 22.2895 91.3014L19.0777 86.4935C18.1402 85.09 16.5578 84.2543 14.8701 84.2712L8.29946 84.3369C4.53283 84.3745 2.07879 80.3915 3.80623 77.0441Z"
+                                                                 fill="#71A1F4" />
+                                                             <path
+                                                                 d="M3.80623 77.0441L15.4697 54.4432C16.7361 51.9893 19.752 51.0266 22.2059 52.293L40.3204 61.6412C42.7743 62.9076 43.737 65.9235 42.4707 68.3774L30.8904 90.817C29.1437 94.2016 24.4052 94.4685 22.2895 91.3014L19.0777 86.4935C18.1402 85.09 16.5578 84.2543 14.8701 84.2712L8.29946 84.3369C4.53283 84.3745 2.07879 80.3915 3.80623 77.0441Z"
+                                                                 fill="url(#paint1_linear)" />
+                                                         </mask>
+                                                         <g class="badge_ribbon" mask="url(#mask0)">
+                                                             <rect width="9.73445" height="46.9502" transform="matrix(0.894023 0.448022 -0.445194 0.895434 24.272 60.4499)"
+                                                                 fill="#FCD977" />
+                                                         </g>
+                                                         <path class="badge_ribbon right"
+                                                             d="M56.5365 97.1074L38.5 65.8673C38.2239 65.389 38.3877 64.7774 38.866 64.5013L63.4476 50.3091C63.9259 50.0329 64.5375 50.1968 64.8137 50.6751L82.832 81.8838C83.2129 82.5435 82.7458 83.3698 81.9841 83.3836L67.2552 83.6511C66.9177 83.6572 66.6061 83.8332 66.4266 84.1191L58.2494 97.1392C57.8487 97.7772 56.9132 97.7598 56.5365 97.1074Z"
+                                                             fill="#F04152" />
+                                                         <path class="badge_ribbon right"
+                                                             d="M56.5365 97.1074L38.5 65.8673C38.2239 65.389 38.3877 64.7774 38.866 64.5013L63.4476 50.3091C63.9259 50.0329 64.5375 50.1968 64.8137 50.6751L82.832 81.8838C83.2129 82.5435 82.7458 83.3698 81.9841 83.3836L67.2552 83.6511C66.9177 83.6572 66.6061 83.8332 66.4266 84.1191L58.2494 97.1392C57.8487 97.7772 56.9132 97.7598 56.5365 97.1074Z"
+                                                             fill="url(#paint2_linear)" />
+                                                         <mask id="mask1" mask-type="alpha" maskUnits="userSpaceOnUse" x="38" y="49" width="45" height="47">
+                                                             <path
+                                                                 d="M53.2165 91.357L40.5 69.3314C39.1193 66.9399 39.9387 63.882 42.3301 62.5013L59.9835 52.3091C62.375 50.9283 65.4329 51.7477 66.8137 54.1392L79.4394 76.0076C81.3438 79.3061 79.0082 83.4376 75.2001 83.5068L69.419 83.6118C67.7314 83.6424 66.1732 84.5224 65.2756 85.9517L61.7808 91.5162C59.7774 94.7061 55.0999 94.6192 53.2165 91.357Z"
+                                                                 fill="#71A1F4" />
+                                                             <path
+                                                                 d="M53.2165 91.357L40.5 69.3314C39.1193 66.9399 39.9387 63.882 42.3301 62.5013L59.9835 52.3091C62.375 50.9283 65.4329 51.7477 66.8137 54.1392L79.4394 76.0076C81.3438 79.3061 79.0082 83.4376 75.2001 83.5068L69.419 83.6118C67.7314 83.6424 66.1732 84.5224 65.2756 85.9517L61.7808 91.5162C59.7774 94.7061 55.0999 94.6192 53.2165 91.357Z"
+                                                                 fill="url(#paint3_linear)" />
+                                                         </mask>
+                                                         <g class="badge_ribbon right" mask="url(#mask1)">
+                                                             <rect width="9.73445" height="46.9502" transform="matrix(0.860033 -0.510239 0.512954 0.858416 50.3103 65.1699)"
+                                                                 fill="#FCD977" />
+                                                         </g>
+                                                         <circle cx="39.5" cy="37.5" r="33.5" fill="#DBDFE7" stroke="#8C62F5" stroke-width="8" />
+                                                         <circle class="badge_circle" cx="39.5" cy="37.5" r="29.5" fill="#8C62F5" stroke="#D1C0FB" stroke-width="4" />
+                                                         {{-- <path class="badge_number"
+                                                         d="M43.16 39.98H41.28V30.7H39.04C39 30.76 37.64 32.78 36.82 33.96L32.54 40.12V42.08H39.02V45H41.28V42.08H43.16V39.98ZM39.06 33.9C39.04 34.58 39.02 35.68 39.02 36.46V39.98H35.02C35.02 39.98 35.84 38.76 36.52 37.78L37.46 36.4C38.1 35.46 38.86 34.16 39.02 33.9H39.06Z"
+                                                         fill="#FFA826" /> --}}
+                                                         <path class="badge_number"
+                                                         d="M43.16 39.98H41.28V30.7H39.04C39 30.76 37.64 32.78 36.82 33.96L32.54 40.12V42.08H39.02V45H41.28V42.08H43.16V39.98ZM39.06 33.9C39.04 34.58 39.02 35.68 39.02 36.46V39.98H35.02C35.02 39.98 35.84 38.76 36.52 37.78L37.46 36.4C38.1 35.46 38.86 34.16 39.02 33.9H39.06Z"
+                                                         fill="#E3D9FC" /> -->
+                                                         <defs>
+                                                             <linearGradient id="paint0_linear" x1="31.2632" y1="56.9671" x2="13.7695" y2="90.8654"
+                                                                 gradientUnits="userSpaceOnUse">
+                                                                 <stop stop-color="#A31523" />
+                                                                 <stop offset="1" stop-color="#F04152" stop-opacity="0" />
+                                                             </linearGradient>
+                                                             <linearGradient id="paint1_linear" x1="31.2632" y1="56.9671" x2="13.7695" y2="90.8654"
+                                                                 gradientUnits="userSpaceOnUse">
+                                                                 <stop stop-color="#27539F" />
+                                                                 <stop offset="1" stop-color="#71A1F4" stop-opacity="0" />
+                                                             </linearGradient>
+                                                             <linearGradient id="paint2_linear" x1="51.1568" y1="57.4052" x2="70.2299" y2="90.4407"
+                                                                 gradientUnits="userSpaceOnUse">
+                                                                 <stop stop-color="#A31523" />
+                                                                 <stop offset="1" stop-color="#F04152" stop-opacity="0" />
+                                                             </linearGradient>
+                                                             <linearGradient id="paint3_linear" x1="51.1568" y1="57.4052" x2="70.2299" y2="90.4407"
+                                                                 gradientUnits="userSpaceOnUse">
+                                                                 <stop stop-color="#27539F" />
+                                                                 <stop offset="1" stop-color="#71A1F4" stop-opacity="0" />
+                                                             </linearGradient>
+                                                         </defs>
+                                                     </svg>
+                                                 </div>
+                                                 <h1>Luxury</h1>
+                                                 <p style="margin-bottom: 3px;">This tier includes the following services:</p>
+                                                 <ul style="text-align: left; list-style-position: inside; height:37vh; padding-left:2%;">
+                                                     <li><b> All in Gold</b></li>
+                                                     @foreach(explode(',',$inclu) as $inclusionl)
+                                                     @if($inclusionl != null)
+                                                     <li><b> {{ $inclusionl }}</b></li>
+                                                     @endif
+                                                     @endforeach
+                                                 </ul>
+                                             </button>
+                                             
+                                         </div>
+                                     
+                                     
+                                     
+                                     
+                                     
+                                     
+                                     
+                                     
+                                     </div>
+                                 </div>
+                             </div>
+                             </div>
+                         </div>
+            <br>
+            <br>
           
                 <div class="div" id="bronze" style="display: none;">
                     @foreach(explode(',',$in) as $inclusionb)
@@ -258,513 +560,316 @@
             <div class="box" style="height: 200px; background:#000;">
 
             </div>
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-    Launch demo modal
-  </button>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
-      <div class="modal-content" style="background-color: grey;">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <div class="badges">
-                <div class="card-level" style="height: 75vh; background:#ffffff; border-radius: 20px; margin:0.5% 1% 0.5% 0.8%;width: 264px;">
-                    <button class="btn-lvl" onclick="inclusionb();" data-dismiss="modal" style="background: none; cursor:pointer;">
-                        <div class="animated_badge animated_badge_1 hide" style="margin: 24px 50px 24px 55px;">
-                            <div class="animated_stars">
-                                <div class="animated_star plus"></div>
-                                <div class="animated_star donut yellow"></div>
-                                <div class="animated_star plus"></div>
-                                <div class="animated_star donut"></div>
-                                <div class="animated_star plus yellow"></div>
-                            </div>
-                            <svg class="animated_badge_svg" width="75" height="100" viewBox="0 0 75 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path class="badge_ribbon left"
-                                    d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
-                                    fill="#A5ACB9" />
-                                <path class="badge_ribbon left"
-                                    d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
-                                    fill="#CD7F32" />
-                                <path class="badge_ribbon left"
-                                    d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
-                                    fill="url(#paint0_linear)" />
-                                <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="16" y="57" width="44" height="43">
-                                    <path
-                                        d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
-                                        fill="#999999" />
-                                    <path
-                                        d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
-                                        fill="url(#paint1_linear)" />
-                                </mask>
-                                <g class="badge_ribbon left" mask="url(#mask0)">
-                                    <rect x="30" y="60" width="15" height="40" fill="#EAEDF2" />
-                                </g>
-                                <circle class="badge_circle" cx="37.5" cy="37.5" r="33.5" fill="#CD7F32" stroke="#C0C6CF" stroke-width="8" />
-                                <path class="badge_number" d="M36.272 45H38.772V30.7H36.572C36.332 32.28 35.292 32.82 32.832 32.88V34.78H36.272V45Z" fill="white" />
-                                <defs>
-                                    <linearGradient id="paint0_linear" x1="38" y1="57" x2="38" y2="89.5" gradientUnits="userSpaceOnUse">
-                                        <stop stop-color="#616468" />
-                                        <stop offset="1" stop-color="#A5ACB9" stop-opacity="0" />
-                                    </linearGradient>
-                                    <linearGradient id="paint1_linear" x1="38" y1="57" x2="38" y2="89.5" gradientUnits="userSpaceOnUse">
-                                        <stop stop-color="#27539F" />
-                                        <stop offset="1" stop-color="#71A1F4" stop-opacity="0" />
-                                    </linearGradient>
-                                </defs>
-                            </svg>
-                        </div>
-                        <h1>Bronze</h1>
-                        <p style="margin-bottom: 3px;">This tier includes the following services:</p>
-                        <ul style="text-align: left; list-style-position: inside; padding-left:2%;">
-                            @foreach(explode(',',$in) as $inclusionb)
-                            @if($inclusionb != null)
-                            <li><b> {{ $inclusionb }}</b></li>
-                            @endif
-                            @endforeach
-                        </ul>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+               Choose your Inclusion
+            </button>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+                <div class="modal-content" style="background-color: grey;">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
                     </button>
-                    
-                </div>  
-                <div class="card-level" style="height: 75vh; background:#ffffff; border-radius: 20px; margin:0.5% 1% 0.5% 0;width: 264px;">
-                    <button class="btn-lvl" onclick="inclusions();" data-dismiss="modal" style="background: none; cursor:pointer;">
-                        <div class="animated_badge animated_badge_2 hide" style="margin: 24px 50px 24px 55px;">
-                            <div class="animated_stars">
-                                <div class="animated_star plus"></div>
-                                <div class="animated_star donut yellow"></div>
-                                <div class="animated_star plus"></div>
-                                <div class="animated_star donut"></div>
-                                <div class="animated_star plus yellow"></div>
-                            </div>
-                            <svg class="animated_badge_svg" width="75" height="100" viewBox="0 0 75 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path class="badge_ribbon"
-                                    d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
-                                    fill="#71A1F4" />
-                                <path class="badge_ribbon"
-                                    d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
-                                    fill="#71A1F4" />
-                                <path class="badge_ribbon"
-                                    d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
-                                    fill="url(#paint0_linear)" />
-                                <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="16" y="57" width="44" height="43">
-                                    <path
-                                        d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
-                                        fill="#71A1F4" />
-                                    <path
-                                        d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
-                                        fill="url(#paint1_linear)" />
-                                </mask>
-                                <g class="badge_ribbon" mask="url(#mask0)">
-                                    <rect x="30" y="60" width="15" height="40" fill="#ABC7F9" />
-                                </g>
-                                <circle class="badge_circle" cx="37.5" cy="37.5" r="33.5" fill="#71A1F4" stroke="#CEDCF5" stroke-width="8" />
-                                <path class="badge_number"
-                                    d="M41.1783 45V42.86H35.0183C37.2183 40.82 41.1783 38.44 41.1783 34.8C41.1783 32.3 39.3983 30.42 36.4383 30.42C33.3583 30.42 31.6983 32.54 31.6983 35.14C31.6983 35.18 31.7183 35.22 31.7183 35.28H34.0983C34.1183 33.76 34.8383 32.62 36.4383 32.62C37.8183 32.62 38.6383 33.52 38.6383 34.86C38.6383 36.22 37.8583 37.38 36.0583 39.04C34.3783 40.62 31.8183 42.92 31.8183 42.92V45H41.1783Z"
-                                    fill="white" />
-                                <defs>
-                                    <linearGradient id="paint0_linear" x1="38" y1="57" x2="38" y2="89.5" gradientUnits="userSpaceOnUse">
-                                        <stop stop-color="#27539F" />
-                                        <stop offset="1" stop-color="#71A1F4" stop-opacity="0" />
-                                    </linearGradient>
-                                    <linearGradient id="paint1_linear" x1="38" y1="57" x2="38" y2="89.5" gradientUnits="userSpaceOnUse">
-                                        <stop stop-color="#27539F" />
-                                        <stop offset="1" stop-color="#71A1F4" stop-opacity="0" />
-                                    </linearGradient>
-                                </defs>
-                            </svg>
-                        </div>
-                        <h1>Silver</h1>
-                        <p style="margin-bottom: 3px;">This tier includes the following services:</p>
-                        <ul style="text-align: left; list-style-position: inside; padding-left:2%; height:50%">
-                            <li><b> All in Bronze</b></li>
-                            @foreach(explode(',',$inc) as $inclusions)
-                            @if($inclusions != null)
-                            <li><b> {{ $inclusions }}</b></li>
-                            @endif
-                            @endforeach
-                        </ul>
-                    </button>
-                    
-                </div>
-                <div class="card-level" style="height: 75vh; background:#ffffff; border-radius: 20px; margin:0.5% 1% 0.5% 0;width: 264px;" >
-                    <button class="btn-lvl" onclick="inclusiong();" data-dismiss="modal" style="background: none; cursor:pointer;">
-                        <div class="animated_badge animated_badge_3 hide" style="margin: 24px 50px 24px 55px;">
-                            <div class="animated_stars">
-                                <div class="animated_star plus"></div>
-                                <div class="animated_star donut yellow"></div>
-                                <div class="animated_star plus"></div>
-                                <div class="animated_star donut"></div>
-                                <div class="animated_star plus yellow"></div>
-                            </div>
-                            <svg class="animated_badge_svg" width="75" height="100" viewBox="0 0 75 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path class="badge_ribbon"
-                                    d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
-                                    fill="#71A1F4" />
-                                <path class="badge_ribbon"
-                                    d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
-                                    fill="#71A1F4" />
-                                <path class="badge_ribbon"
-                                    d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
-                                    fill="url(#paint0_linear)" />
-                                <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="16" y="57" width="44" height="43">
-                                    <path
-                                        d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
-                                        fill="#71A1F4" />
-                                    <path
-                                        d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
-                                        fill="url(#paint1_linear)" />
-                                </mask>
-                                <g class="badge_ribbon" mask="url(#mask0)">
-                                    <rect x="23" y="60" width="8" height="40" fill="#ABC7F9" />
-                                    <rect x="43" y="60" width="8" height="40" fill="#ABC7F9" />
-                                </g>
-                                <circle cx="37.5" cy="37.5" r="33.5" fill="#C0C6CF" stroke="#FCD977" stroke-width="8" />
-                                <circle class="badge_circle" cx="37.5" cy="37.5" r="29.5" fill="#FCD977" stroke="#FFA826" stroke-width="4" />
-                                <path class="badge_number"
-                                    d="M32.72 40.88C32.9 43.36 34.62 45.26 37.64 45.26C40.72 45.26 42.66 43.42 42.66 40.78C42.66 39.02 41.72 37.68 40.02 37.12C41.16 36.52 41.94 35.5 41.94 34.16C41.94 31.94 40.28 30.42 37.7 30.42C35.12 30.42 33.48 32.04 33.42 34.26H35.72C35.84 33.14 36.6 32.5 37.64 32.5C38.64 32.5 39.46 33.06 39.48 34.24C39.48 35.76 38.24 36.24 36.66 36.24V38.24H37.22C38.86 38.24 40.14 38.96 40.14 40.7C40.14 42.06 39.2 43.16 37.7 43.16C36.14 43.16 35.32 42.24 35.16 40.88H32.72Z"
-                                    fill="white" />
-                                <defs>
-                                    <linearGradient id="paint0_linear" x1="38" y1="57" x2="38" y2="89.5" gradientUnits="userSpaceOnUse">
-                                        <stop stop-color="#27539F" />
-                                        <stop offset="1" stop-color="#71A1F4" stop-opacity="0" />
-                                    </linearGradient>
-                                    <linearGradient id="paint1_linear" x1="38" y1="57" x2="38" y2="89.5" gradientUnits="userSpaceOnUse">
-                                        <stop stop-color="#27539F" />
-                                        <stop offset="1" stop-color="#71A1F4" stop-opacity="0" />
-                                    </linearGradient>
-                                </defs>
-                            </svg>
-                        </div>
-                        <h1>Gold</h1>
-                        <p style="margin-bottom: 3px;">This tier includes the following services:</p>
-                        <ul style="text-align: left; list-style-position: inside; padding-left:2%;">
-                            <li><b> All in Silver</b></li>
-                            @foreach(explode(',',$incs) as $inclusiong)
-                            @if($inclusiong != null)
-                            <li><b> {{ $inclusiong }}</b></li>
-                            @endif
-                            @endforeach
-                        </ul>
-                    </button>
-                    
-                </div>
-                <div class="card-level" style="height: 75vh; background:#ffffff; border-radius: 20px; margin:0.5% 0.5% 0.5% 0;width: 264px;">
-                    <button class="btn-lvl" onclick="inclusionl();" data-dismiss="modal" style="background: none; cursor:pointer;">
-                        <div class="animated_badge animated_badge_5 hide" style="margin: 24px 50px 24px 55px;">
-                            <div class="animated_stars">
-                                <div class="animated_star plus"></div>
-                                <div class="animated_star donut yellow"></div>
-                                <div class="animated_star plus"></div>
-                                <div class="animated_star donut"></div>
-                                <div class="animated_star plus yellow"></div>
-                            </div>
-                            <svg class="animated_badge_svg" width="84" height="99" viewBox="0 0 84 99" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path class="badge_ribbon"
-                                    d="M0.761166 82.9447L17.3041 50.8886C17.5574 50.3979 18.1606 50.2053 18.6513 50.4586L43.875 63.4756C44.3658 63.7289 44.5583 64.332 44.305 64.8228L27.7788 96.8466C27.4294 97.5236 26.4817 97.5769 26.0586 96.9435L17.8756 84.694C17.6881 84.4133 17.3716 84.2461 17.0341 84.2495L1.65981 84.4033C0.906487 84.4108 0.415676 83.6142 0.761166 82.9447Z"
-                                    fill="#F04152" />
-                                <path class="badge_ribbon"
-                                    d="M0.761166 82.9447L17.3041 50.8886C17.5574 50.3979 18.1606 50.2053 18.6513 50.4586L43.875 63.4756C44.3658 63.7289 44.5583 64.332 44.305 64.8228L27.7788 96.8466C27.4294 97.5236 26.4817 97.5769 26.0586 96.9435L17.8756 84.694C17.6881 84.4133 17.3716 84.2461 17.0341 84.2495L1.65981 84.4033C0.906487 84.4108 0.415676 83.6142 0.761166 82.9447Z"
-                                    fill="url(#paint0_linear)" />
-                                <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="1" y="50" width="44" height="46">
-                                    <path
-                                        d="M3.80623 77.0441L15.4697 54.4432C16.7361 51.9893 19.752 51.0266 22.2059 52.293L40.3204 61.6412C42.7743 62.9076 43.737 65.9235 42.4707 68.3774L30.8904 90.817C29.1437 94.2016 24.4052 94.4685 22.2895 91.3014L19.0777 86.4935C18.1402 85.09 16.5578 84.2543 14.8701 84.2712L8.29946 84.3369C4.53283 84.3745 2.07879 80.3915 3.80623 77.0441Z"
-                                        fill="#71A1F4" />
-                                    <path
-                                        d="M3.80623 77.0441L15.4697 54.4432C16.7361 51.9893 19.752 51.0266 22.2059 52.293L40.3204 61.6412C42.7743 62.9076 43.737 65.9235 42.4707 68.3774L30.8904 90.817C29.1437 94.2016 24.4052 94.4685 22.2895 91.3014L19.0777 86.4935C18.1402 85.09 16.5578 84.2543 14.8701 84.2712L8.29946 84.3369C4.53283 84.3745 2.07879 80.3915 3.80623 77.0441Z"
-                                        fill="url(#paint1_linear)" />
-                                </mask>
-                                <g class="badge_ribbon" mask="url(#mask0)">
-                                    <rect width="9.73445" height="46.9502" transform="matrix(0.894023 0.448022 -0.445194 0.895434 24.272 60.4499)"
-                                        fill="#FCD977" />
-                                </g>
-                                <path class="badge_ribbon right"
-                                    d="M56.5365 97.1074L38.5 65.8673C38.2239 65.389 38.3877 64.7774 38.866 64.5013L63.4476 50.3091C63.9259 50.0329 64.5375 50.1968 64.8137 50.6751L82.832 81.8838C83.2129 82.5435 82.7458 83.3698 81.9841 83.3836L67.2552 83.6511C66.9177 83.6572 66.6061 83.8332 66.4266 84.1191L58.2494 97.1392C57.8487 97.7772 56.9132 97.7598 56.5365 97.1074Z"
-                                    fill="#F04152" />
-                                <path class="badge_ribbon right"
-                                    d="M56.5365 97.1074L38.5 65.8673C38.2239 65.389 38.3877 64.7774 38.866 64.5013L63.4476 50.3091C63.9259 50.0329 64.5375 50.1968 64.8137 50.6751L82.832 81.8838C83.2129 82.5435 82.7458 83.3698 81.9841 83.3836L67.2552 83.6511C66.9177 83.6572 66.6061 83.8332 66.4266 84.1191L58.2494 97.1392C57.8487 97.7772 56.9132 97.7598 56.5365 97.1074Z"
-                                    fill="url(#paint2_linear)" />
-                                <mask id="mask1" mask-type="alpha" maskUnits="userSpaceOnUse" x="38" y="49" width="45" height="47">
-                                    <path
-                                        d="M53.2165 91.357L40.5 69.3314C39.1193 66.9399 39.9387 63.882 42.3301 62.5013L59.9835 52.3091C62.375 50.9283 65.4329 51.7477 66.8137 54.1392L79.4394 76.0076C81.3438 79.3061 79.0082 83.4376 75.2001 83.5068L69.419 83.6118C67.7314 83.6424 66.1732 84.5224 65.2756 85.9517L61.7808 91.5162C59.7774 94.7061 55.0999 94.6192 53.2165 91.357Z"
-                                        fill="#71A1F4" />
-                                    <path
-                                        d="M53.2165 91.357L40.5 69.3314C39.1193 66.9399 39.9387 63.882 42.3301 62.5013L59.9835 52.3091C62.375 50.9283 65.4329 51.7477 66.8137 54.1392L79.4394 76.0076C81.3438 79.3061 79.0082 83.4376 75.2001 83.5068L69.419 83.6118C67.7314 83.6424 66.1732 84.5224 65.2756 85.9517L61.7808 91.5162C59.7774 94.7061 55.0999 94.6192 53.2165 91.357Z"
-                                        fill="url(#paint3_linear)" />
-                                </mask>
-                                <g class="badge_ribbon right" mask="url(#mask1)">
-                                    <rect width="9.73445" height="46.9502" transform="matrix(0.860033 -0.510239 0.512954 0.858416 50.3103 65.1699)"
-                                        fill="#FCD977" />
-                                </g>
-                                <circle cx="39.5" cy="37.5" r="33.5" fill="#DBDFE7" stroke="#8C62F5" stroke-width="8" />
-                                <circle class="badge_circle" cx="39.5" cy="37.5" r="29.5" fill="#8C62F5" stroke="#D1C0FB" stroke-width="4" />
-                                {{-- <path class="badge_number"
-                                d="M43.16 39.98H41.28V30.7H39.04C39 30.76 37.64 32.78 36.82 33.96L32.54 40.12V42.08H39.02V45H41.28V42.08H43.16V39.98ZM39.06 33.9C39.04 34.58 39.02 35.68 39.02 36.46V39.98H35.02C35.02 39.98 35.84 38.76 36.52 37.78L37.46 36.4C38.1 35.46 38.86 34.16 39.02 33.9H39.06Z"
-                                fill="#FFA826" /> --}}
-                                <path class="badge_number"
-                                d="M43.16 39.98H41.28V30.7H39.04C39 30.76 37.64 32.78 36.82 33.96L32.54 40.12V42.08H39.02V45H41.28V42.08H43.16V39.98ZM39.06 33.9C39.04 34.58 39.02 35.68 39.02 36.46V39.98H35.02C35.02 39.98 35.84 38.76 36.52 37.78L37.46 36.4C38.1 35.46 38.86 34.16 39.02 33.9H39.06Z"
-                                fill="#E3D9FC" /> -->
-                                <defs>
-                                    <linearGradient id="paint0_linear" x1="31.2632" y1="56.9671" x2="13.7695" y2="90.8654"
-                                        gradientUnits="userSpaceOnUse">
-                                        <stop stop-color="#A31523" />
-                                        <stop offset="1" stop-color="#F04152" stop-opacity="0" />
-                                    </linearGradient>
-                                    <linearGradient id="paint1_linear" x1="31.2632" y1="56.9671" x2="13.7695" y2="90.8654"
-                                        gradientUnits="userSpaceOnUse">
-                                        <stop stop-color="#27539F" />
-                                        <stop offset="1" stop-color="#71A1F4" stop-opacity="0" />
-                                    </linearGradient>
-                                    <linearGradient id="paint2_linear" x1="51.1568" y1="57.4052" x2="70.2299" y2="90.4407"
-                                        gradientUnits="userSpaceOnUse">
-                                        <stop stop-color="#A31523" />
-                                        <stop offset="1" stop-color="#F04152" stop-opacity="0" />
-                                    </linearGradient>
-                                    <linearGradient id="paint3_linear" x1="51.1568" y1="57.4052" x2="70.2299" y2="90.4407"
-                                        gradientUnits="userSpaceOnUse">
-                                        <stop stop-color="#27539F" />
-                                        <stop offset="1" stop-color="#71A1F4" stop-opacity="0" />
-                                    </linearGradient>
-                                </defs>
-                            </svg>
-                        </div>
-                        <h1>Luxury</h1>
-                        <p style="margin-bottom: 3px;">This tier includes the following services:</p>
-                        <ul style="text-align: left; list-style-position: inside; padding-left:2%;">
-                            <li><b> All in Gold</b></li>
-                            @foreach(explode(',',$inclu) as $inclusionl)
-                            @if($inclusionl != null)
-                            <li><b> {{ $inclusionl }}</b></li>
-                            @endif
-                            @endforeach
-                        </ul>
-                    </button>
-                    
-                </div>
-            
-            
-            
-            
-            
-            
-            
-             
-            </div>
-        </div>
-      </div>
-    </div>
-  </div>
-    
-            <div class="boxs">
-                <a href="">
-                    <div class="badges">
-                        <center>
-
-                        <div class="animated_badge animated_badge_1 hide">
-                            <div class="animated_stars">
-                                <div class="animated_star plus"></div>
-                                <div class="animated_star donut yellow"></div>
-                                <div class="animated_star plus"></div>
-                                <div class="animated_star donut"></div>
-                                <div class="animated_star plus yellow"></div>
-                            </div>
-                            <svg class="animated_badge_svg" width="75" height="100" viewBox="0 0 75 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path class="badge_ribbon left"
-                                    d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
-                                    fill="#A5ACB9" />
-                                <path class="badge_ribbon left"
-                                    d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
-                                    fill="#CD7F32" />
-                                <path class="badge_ribbon left"
-                                    d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
-                                    fill="url(#paint0_linear)" />
-                                <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="16" y="57" width="44" height="43">
-                                    <path
-                                        d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
-                                        fill="#999999" />
-                                    <path
-                                        d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
-                                        fill="url(#paint1_linear)" />
-                                </mask>
-                                <g class="badge_ribbon left" mask="url(#mask0)">
-                                    <rect x="30" y="60" width="15" height="40" fill="#EAEDF2" />
-                                </g>
-                                <circle class="badge_circle" cx="37.5" cy="37.5" r="33.5" fill="#CD7F32" stroke="#C0C6CF" stroke-width="8" />
-                                <path class="badge_number" d="M36.272 45H38.772V30.7H36.572C36.332 32.28 35.292 32.82 32.832 32.88V34.78H36.272V45Z" fill="white" />
-                                <defs>
-                                    <linearGradient id="paint0_linear" x1="38" y1="57" x2="38" y2="89.5" gradientUnits="userSpaceOnUse">
-                                        <stop stop-color="#616468" />
-                                        <stop offset="1" stop-color="#A5ACB9" stop-opacity="0" />
-                                    </linearGradient>
-                                    <linearGradient id="paint1_linear" x1="38" y1="57" x2="38" y2="89.5" gradientUnits="userSpaceOnUse">
-                                        <stop stop-color="#27539F" />
-                                        <stop offset="1" stop-color="#71A1F4" stop-opacity="0" />
-                                    </linearGradient>
-                                </defs>
-                            </svg>
-                        </div></center>
                     </div>
-                    <h3 style="color: black;">Bronze</h3>
-                    <p style="color: black;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum, id.</p>
-                </a>
-            </div>
-    
-            <div class="boxs">
-                <a href="">
-                    <div class="badges">
-                        <center>
-                        <div class="animated_badge animated_badge_2 hide">
-                            <div class="animated_stars">
-                                <div class="animated_star plus"></div>
-                                <div class="animated_star donut yellow"></div>
-                                <div class="animated_star plus"></div>
-                                <div class="animated_star donut"></div>
-                                <div class="animated_star plus yellow"></div>
+                    <div class="modal-body">
+                        <div class="badges">
+                            <div class="card-level" style="height: 75vh; background:#ffffff; border-radius: 20px; margin:0.5% 1% 0.5% 0.8%;width: 264px;">
+                                <button class="btn-lvl" onclick="inclusionb();" data-dismiss="modal" style=" background: none; cursor:pointer;">
+                                    <div class="animated_badge animated_badge_1 hide" style="margin: 24px 50px 24px 55px;">
+                                        <div class="animated_stars">
+                                            <div class="animated_star plus"></div>
+                                            <div class="animated_star donut yellow"></div>
+                                            <div class="animated_star plus"></div>
+                                            <div class="animated_star donut"></div>
+                                            <div class="animated_star plus yellow"></div>
+                                        </div>
+                                        <svg class="animated_badge_svg" width="75" height="100" viewBox="0 0 75 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path class="badge_ribbon left"
+                                                d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
+                                                fill="#A5ACB9" />
+                                            <path class="badge_ribbon left"
+                                                d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
+                                                fill="#CD7F32" />
+                                            <path class="badge_ribbon left"
+                                                d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
+                                                fill="url(#paint0_linear)" />
+                                            <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="16" y="57" width="44" height="43">
+                                                <path
+                                                    d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
+                                                    fill="#999999" />
+                                                <path
+                                                    d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
+                                                    fill="url(#paint1_linear)" />
+                                            </mask>
+                                            <g class="badge_ribbon left" mask="url(#mask0)">
+                                                <rect x="30" y="60" width="15" height="40" fill="#EAEDF2" />
+                                            </g>
+                                            <circle class="badge_circle" cx="37.5" cy="37.5" r="33.5" fill="#CD7F32" stroke="#C0C6CF" stroke-width="8" />
+                                            <path class="badge_number" d="M36.272 45H38.772V30.7H36.572C36.332 32.28 35.292 32.82 32.832 32.88V34.78H36.272V45Z" fill="white" />
+                                            <defs>
+                                                <linearGradient id="paint0_linear" x1="38" y1="57" x2="38" y2="89.5" gradientUnits="userSpaceOnUse">
+                                                    <stop stop-color="#616468" />
+                                                    <stop offset="1" stop-color="#A5ACB9" stop-opacity="0" />
+                                                </linearGradient>
+                                                <linearGradient id="paint1_linear" x1="38" y1="57" x2="38" y2="89.5" gradientUnits="userSpaceOnUse">
+                                                    <stop stop-color="#27539F" />
+                                                    <stop offset="1" stop-color="#71A1F4" stop-opacity="0" />
+                                                </linearGradient>
+                                            </defs>
+                                        </svg>
+                                    </div>
+                                    <h1>Bronze</h1>
+                                    <p style="margin-bottom: 3px;">This tier includes the following services:</p>
+                                    <ul style="text-align: left; list-style-position: inside; height:37vh; padding-left:2%;">
+                                        @foreach(explode(',',$in) as $inclusionb)
+                                        @if($inclusionb != null)
+                                        <li><b> {{ $inclusionb }}</b></li>
+                                        @endif
+                                        @endforeach
+                                    </ul>
+                                </button>
+                                
+                            </div>  
+                            <div class="card-level" style="height: 75vh; background:#ffffff; border-radius: 20px; margin:0.5% 1% 0.5% 0;width: 264px;">
+                                <button class="btn-lvl" onclick="inclusions();" data-dismiss="modal" style=" background: none; cursor:pointer;">
+                                    <div class="animated_badge animated_badge_2 hide" style="margin: 24px 50px 24px 55px;">
+                                        <div class="animated_stars">
+                                            <div class="animated_star plus"></div>
+                                            <div class="animated_star donut yellow"></div>
+                                            <div class="animated_star plus"></div>
+                                            <div class="animated_star donut"></div>
+                                            <div class="animated_star plus yellow"></div>
+                                        </div>
+                                        <svg class="animated_badge_svg" width="75" height="100" viewBox="0 0 75 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path class="badge_ribbon"
+                                                d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
+                                                fill="#71A1F4" />
+                                            <path class="badge_ribbon"
+                                                d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
+                                                fill="#71A1F4" />
+                                            <path class="badge_ribbon"
+                                                d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
+                                                fill="url(#paint0_linear)" />
+                                            <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="16" y="57" width="44" height="43">
+                                                <path
+                                                    d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
+                                                    fill="#71A1F4" />
+                                                <path
+                                                    d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
+                                                    fill="url(#paint1_linear)" />
+                                            </mask>
+                                            <g class="badge_ribbon" mask="url(#mask0)">
+                                                <rect x="30" y="60" width="15" height="40" fill="#ABC7F9" />
+                                            </g>
+                                            <circle class="badge_circle" cx="37.5" cy="37.5" r="33.5" fill="#71A1F4" stroke="#CEDCF5" stroke-width="8" />
+                                            <path class="badge_number"
+                                                d="M41.1783 45V42.86H35.0183C37.2183 40.82 41.1783 38.44 41.1783 34.8C41.1783 32.3 39.3983 30.42 36.4383 30.42C33.3583 30.42 31.6983 32.54 31.6983 35.14C31.6983 35.18 31.7183 35.22 31.7183 35.28H34.0983C34.1183 33.76 34.8383 32.62 36.4383 32.62C37.8183 32.62 38.6383 33.52 38.6383 34.86C38.6383 36.22 37.8583 37.38 36.0583 39.04C34.3783 40.62 31.8183 42.92 31.8183 42.92V45H41.1783Z"
+                                                fill="white" />
+                                            <defs>
+                                                <linearGradient id="paint0_linear" x1="38" y1="57" x2="38" y2="89.5" gradientUnits="userSpaceOnUse">
+                                                    <stop stop-color="#27539F" />
+                                                    <stop offset="1" stop-color="#71A1F4" stop-opacity="0" />
+                                                </linearGradient>
+                                                <linearGradient id="paint1_linear" x1="38" y1="57" x2="38" y2="89.5" gradientUnits="userSpaceOnUse">
+                                                    <stop stop-color="#27539F" />
+                                                    <stop offset="1" stop-color="#71A1F4" stop-opacity="0" />
+                                                </linearGradient>
+                                            </defs>
+                                        </svg>
+                                    </div>
+                                    <h1>Silver</h1>
+                                    <p style="margin-bottom: 3px;">This tier includes the following services:</p>
+                                    <ul style="text-align: left; list-style-position: inside; height:37vh; padding-left:2%;">
+                                        <li><b> All in Bronze</b></li>
+                                        @foreach(explode(',',$inc) as $inclusions)
+                                        @if($inclusions != null)
+                                        <li><b> {{ $inclusions }}</b></li>
+                                        @endif
+                                        @endforeach
+                                    </ul>
+                                </button>
+                                
                             </div>
-                            <svg class="animated_badge_svg" width="75" height="100" viewBox="0 0 75 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path class="badge_ribbon"
-                                    d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
-                                    fill="#71A1F4" />
-                                <path class="badge_ribbon"
-                                    d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
-                                    fill="#71A1F4" />
-                                <path class="badge_ribbon"
-                                    d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
-                                    fill="url(#paint0_linear)" />
-                                <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="16" y="57" width="44" height="43">
-                                    <path
-                                        d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
-                                        fill="#71A1F4" />
-                                    <path
-                                        d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
-                                        fill="url(#paint1_linear)" />
-                                </mask>
-                                <g class="badge_ribbon" mask="url(#mask0)">
-                                    <rect x="30" y="60" width="15" height="40" fill="#ABC7F9" />
-                                </g>
-                                <circle class="badge_circle" cx="37.5" cy="37.5" r="33.5" fill="#71A1F4" stroke="#CEDCF5" stroke-width="8" />
-                                <path class="badge_number"
-                                    d="M41.1783 45V42.86H35.0183C37.2183 40.82 41.1783 38.44 41.1783 34.8C41.1783 32.3 39.3983 30.42 36.4383 30.42C33.3583 30.42 31.6983 32.54 31.6983 35.14C31.6983 35.18 31.7183 35.22 31.7183 35.28H34.0983C34.1183 33.76 34.8383 32.62 36.4383 32.62C37.8183 32.62 38.6383 33.52 38.6383 34.86C38.6383 36.22 37.8583 37.38 36.0583 39.04C34.3783 40.62 31.8183 42.92 31.8183 42.92V45H41.1783Z"
-                                    fill="white" />
-                                <defs>
-                                    <linearGradient id="paint0_linear" x1="38" y1="57" x2="38" y2="89.5" gradientUnits="userSpaceOnUse">
-                                        <stop stop-color="#27539F" />
-                                        <stop offset="1" stop-color="#71A1F4" stop-opacity="0" />
-                                    </linearGradient>
-                                    <linearGradient id="paint1_linear" x1="38" y1="57" x2="38" y2="89.5" gradientUnits="userSpaceOnUse">
-                                        <stop stop-color="#27539F" />
-                                        <stop offset="1" stop-color="#71A1F4" stop-opacity="0" />
-                                    </linearGradient>
-                                </defs>
-                            </svg>
-                        </div></center>
+                            <div class="card-level" style="height: 75vh; background:#ffffff; border-radius: 20px; margin:0.5% 1% 0.5% 0;width: 264px;" >
+                                <button class="btn-lvl" onclick="inclusiong();" data-dismiss="modal" style=" background: none; cursor:pointer;">
+                                    <div class="animated_badge animated_badge_3 hide" style="margin: 24px 50px 24px 55px;">
+                                        <div class="animated_stars">
+                                            <div class="animated_star plus"></div>
+                                            <div class="animated_star donut yellow"></div>
+                                            <div class="animated_star plus"></div>
+                                            <div class="animated_star donut"></div>
+                                            <div class="animated_star plus yellow"></div>
+                                        </div>
+                                        <svg class="animated_badge_svg" width="75" height="100" viewBox="0 0 75 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path class="badge_ribbon"
+                                                d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
+                                                fill="#71A1F4" />
+                                            <path class="badge_ribbon"
+                                                d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
+                                                fill="#71A1F4" />
+                                            <path class="badge_ribbon"
+                                                d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
+                                                fill="url(#paint0_linear)" />
+                                            <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="16" y="57" width="44" height="43">
+                                                <path
+                                                    d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
+                                                    fill="#71A1F4" />
+                                                <path
+                                                    d="M16 86.7506V62C16 59.2386 18.2386 57 21 57H55C57.7614 57 60 59.2386 60 62V86.8112C60 88.7561 58.8722 90.5246 57.1087 91.3448L40.5616 99.0411C39.2517 99.6504 37.7424 99.6633 36.4223 99.0766L18.9693 91.3197C17.1637 90.5172 16 88.7266 16 86.7506Z"
+                                                    fill="url(#paint1_linear)" />
+                                            </mask>
+                                            <g class="badge_ribbon" mask="url(#mask0)">
+                                                <rect x="23" y="60" width="8" height="40" fill="#ABC7F9" />
+                                                <rect x="43" y="60" width="8" height="40" fill="#ABC7F9" />
+                                            </g>
+                                            <circle cx="37.5" cy="37.5" r="33.5" fill="#C0C6CF" stroke="#FCD977" stroke-width="8" />
+                                            <circle class="badge_circle" cx="37.5" cy="37.5" r="29.5" fill="#FCD977" stroke="#FFA826" stroke-width="4" />
+                                            <path class="badge_number"
+                                                d="M32.72 40.88C32.9 43.36 34.62 45.26 37.64 45.26C40.72 45.26 42.66 43.42 42.66 40.78C42.66 39.02 41.72 37.68 40.02 37.12C41.16 36.52 41.94 35.5 41.94 34.16C41.94 31.94 40.28 30.42 37.7 30.42C35.12 30.42 33.48 32.04 33.42 34.26H35.72C35.84 33.14 36.6 32.5 37.64 32.5C38.64 32.5 39.46 33.06 39.48 34.24C39.48 35.76 38.24 36.24 36.66 36.24V38.24H37.22C38.86 38.24 40.14 38.96 40.14 40.7C40.14 42.06 39.2 43.16 37.7 43.16C36.14 43.16 35.32 42.24 35.16 40.88H32.72Z"
+                                                fill="white" />
+                                            <defs>
+                                                <linearGradient id="paint0_linear" x1="38" y1="57" x2="38" y2="89.5" gradientUnits="userSpaceOnUse">
+                                                    <stop stop-color="#27539F" />
+                                                    <stop offset="1" stop-color="#71A1F4" stop-opacity="0" />
+                                                </linearGradient>
+                                                <linearGradient id="paint1_linear" x1="38" y1="57" x2="38" y2="89.5" gradientUnits="userSpaceOnUse">
+                                                    <stop stop-color="#27539F" />
+                                                    <stop offset="1" stop-color="#71A1F4" stop-opacity="0" />
+                                                </linearGradient>
+                                            </defs>
+                                        </svg>
+                                    </div>
+                                    <h1>Gold</h1>
+                                    <p style="margin-bottom: 3px;">This tier includes the following services:</p>
+                                    <ul style="text-align: left; list-style-position: inside; height:37vh; padding-left:2%;">
+                                        <li><b> All in Silver</b></li>
+                                        @foreach(explode(',',$incs) as $inclusiong)
+                                        @if($inclusiong != null)
+                                        <li><b> {{ $inclusiong }}</b></li>
+                                        @endif
+                                        @endforeach
+                                    </ul>
+                                </button>
+                                
+                            </div>
+                            <div class="card-level" style="height: 75vh; background:#ffffff; border-radius: 20px; margin:0.5% 0.5% 0.5% 0;width: 264px;">
+                                <button class="btn-lvl" onclick="inclusionl();" data-dismiss="modal" style=" background: none; cursor:pointer;">
+                                    <div class="animated_badge animated_badge_5 hide" style="margin: 24px 50px 24px 55px;">
+                                        <div class="animated_stars">
+                                            <div class="animated_star plus"></div>
+                                            <div class="animated_star donut yellow"></div>
+                                            <div class="animated_star plus"></div>
+                                            <div class="animated_star donut"></div>
+                                            <div class="animated_star plus yellow"></div>
+                                        </div>
+                                        <svg class="animated_badge_svg" width="84" height="99" viewBox="0 0 84 99" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path class="badge_ribbon"
+                                                d="M0.761166 82.9447L17.3041 50.8886C17.5574 50.3979 18.1606 50.2053 18.6513 50.4586L43.875 63.4756C44.3658 63.7289 44.5583 64.332 44.305 64.8228L27.7788 96.8466C27.4294 97.5236 26.4817 97.5769 26.0586 96.9435L17.8756 84.694C17.6881 84.4133 17.3716 84.2461 17.0341 84.2495L1.65981 84.4033C0.906487 84.4108 0.415676 83.6142 0.761166 82.9447Z"
+                                                fill="#F04152" />
+                                            <path class="badge_ribbon"
+                                                d="M0.761166 82.9447L17.3041 50.8886C17.5574 50.3979 18.1606 50.2053 18.6513 50.4586L43.875 63.4756C44.3658 63.7289 44.5583 64.332 44.305 64.8228L27.7788 96.8466C27.4294 97.5236 26.4817 97.5769 26.0586 96.9435L17.8756 84.694C17.6881 84.4133 17.3716 84.2461 17.0341 84.2495L1.65981 84.4033C0.906487 84.4108 0.415676 83.6142 0.761166 82.9447Z"
+                                                fill="url(#paint0_linear)" />
+                                            <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="1" y="50" width="44" height="46">
+                                                <path
+                                                    d="M3.80623 77.0441L15.4697 54.4432C16.7361 51.9893 19.752 51.0266 22.2059 52.293L40.3204 61.6412C42.7743 62.9076 43.737 65.9235 42.4707 68.3774L30.8904 90.817C29.1437 94.2016 24.4052 94.4685 22.2895 91.3014L19.0777 86.4935C18.1402 85.09 16.5578 84.2543 14.8701 84.2712L8.29946 84.3369C4.53283 84.3745 2.07879 80.3915 3.80623 77.0441Z"
+                                                    fill="#71A1F4" />
+                                                <path
+                                                    d="M3.80623 77.0441L15.4697 54.4432C16.7361 51.9893 19.752 51.0266 22.2059 52.293L40.3204 61.6412C42.7743 62.9076 43.737 65.9235 42.4707 68.3774L30.8904 90.817C29.1437 94.2016 24.4052 94.4685 22.2895 91.3014L19.0777 86.4935C18.1402 85.09 16.5578 84.2543 14.8701 84.2712L8.29946 84.3369C4.53283 84.3745 2.07879 80.3915 3.80623 77.0441Z"
+                                                    fill="url(#paint1_linear)" />
+                                            </mask>
+                                            <g class="badge_ribbon" mask="url(#mask0)">
+                                                <rect width="9.73445" height="46.9502" transform="matrix(0.894023 0.448022 -0.445194 0.895434 24.272 60.4499)"
+                                                    fill="#FCD977" />
+                                            </g>
+                                            <path class="badge_ribbon right"
+                                                d="M56.5365 97.1074L38.5 65.8673C38.2239 65.389 38.3877 64.7774 38.866 64.5013L63.4476 50.3091C63.9259 50.0329 64.5375 50.1968 64.8137 50.6751L82.832 81.8838C83.2129 82.5435 82.7458 83.3698 81.9841 83.3836L67.2552 83.6511C66.9177 83.6572 66.6061 83.8332 66.4266 84.1191L58.2494 97.1392C57.8487 97.7772 56.9132 97.7598 56.5365 97.1074Z"
+                                                fill="#F04152" />
+                                            <path class="badge_ribbon right"
+                                                d="M56.5365 97.1074L38.5 65.8673C38.2239 65.389 38.3877 64.7774 38.866 64.5013L63.4476 50.3091C63.9259 50.0329 64.5375 50.1968 64.8137 50.6751L82.832 81.8838C83.2129 82.5435 82.7458 83.3698 81.9841 83.3836L67.2552 83.6511C66.9177 83.6572 66.6061 83.8332 66.4266 84.1191L58.2494 97.1392C57.8487 97.7772 56.9132 97.7598 56.5365 97.1074Z"
+                                                fill="url(#paint2_linear)" />
+                                            <mask id="mask1" mask-type="alpha" maskUnits="userSpaceOnUse" x="38" y="49" width="45" height="47">
+                                                <path
+                                                    d="M53.2165 91.357L40.5 69.3314C39.1193 66.9399 39.9387 63.882 42.3301 62.5013L59.9835 52.3091C62.375 50.9283 65.4329 51.7477 66.8137 54.1392L79.4394 76.0076C81.3438 79.3061 79.0082 83.4376 75.2001 83.5068L69.419 83.6118C67.7314 83.6424 66.1732 84.5224 65.2756 85.9517L61.7808 91.5162C59.7774 94.7061 55.0999 94.6192 53.2165 91.357Z"
+                                                    fill="#71A1F4" />
+                                                <path
+                                                    d="M53.2165 91.357L40.5 69.3314C39.1193 66.9399 39.9387 63.882 42.3301 62.5013L59.9835 52.3091C62.375 50.9283 65.4329 51.7477 66.8137 54.1392L79.4394 76.0076C81.3438 79.3061 79.0082 83.4376 75.2001 83.5068L69.419 83.6118C67.7314 83.6424 66.1732 84.5224 65.2756 85.9517L61.7808 91.5162C59.7774 94.7061 55.0999 94.6192 53.2165 91.357Z"
+                                                    fill="url(#paint3_linear)" />
+                                            </mask>
+                                            <g class="badge_ribbon right" mask="url(#mask1)">
+                                                <rect width="9.73445" height="46.9502" transform="matrix(0.860033 -0.510239 0.512954 0.858416 50.3103 65.1699)"
+                                                    fill="#FCD977" />
+                                            </g>
+                                            <circle cx="39.5" cy="37.5" r="33.5" fill="#DBDFE7" stroke="#8C62F5" stroke-width="8" />
+                                            <circle class="badge_circle" cx="39.5" cy="37.5" r="29.5" fill="#8C62F5" stroke="#D1C0FB" stroke-width="4" />
+                                            {{-- <path class="badge_number"
+                                            d="M43.16 39.98H41.28V30.7H39.04C39 30.76 37.64 32.78 36.82 33.96L32.54 40.12V42.08H39.02V45H41.28V42.08H43.16V39.98ZM39.06 33.9C39.04 34.58 39.02 35.68 39.02 36.46V39.98H35.02C35.02 39.98 35.84 38.76 36.52 37.78L37.46 36.4C38.1 35.46 38.86 34.16 39.02 33.9H39.06Z"
+                                            fill="#FFA826" /> --}}
+                                            <path class="badge_number"
+                                            d="M43.16 39.98H41.28V30.7H39.04C39 30.76 37.64 32.78 36.82 33.96L32.54 40.12V42.08H39.02V45H41.28V42.08H43.16V39.98ZM39.06 33.9C39.04 34.58 39.02 35.68 39.02 36.46V39.98H35.02C35.02 39.98 35.84 38.76 36.52 37.78L37.46 36.4C38.1 35.46 38.86 34.16 39.02 33.9H39.06Z"
+                                            fill="#E3D9FC" /> -->
+                                            <defs>
+                                                <linearGradient id="paint0_linear" x1="31.2632" y1="56.9671" x2="13.7695" y2="90.8654"
+                                                    gradientUnits="userSpaceOnUse">
+                                                    <stop stop-color="#A31523" />
+                                                    <stop offset="1" stop-color="#F04152" stop-opacity="0" />
+                                                </linearGradient>
+                                                <linearGradient id="paint1_linear" x1="31.2632" y1="56.9671" x2="13.7695" y2="90.8654"
+                                                    gradientUnits="userSpaceOnUse">
+                                                    <stop stop-color="#27539F" />
+                                                    <stop offset="1" stop-color="#71A1F4" stop-opacity="0" />
+                                                </linearGradient>
+                                                <linearGradient id="paint2_linear" x1="51.1568" y1="57.4052" x2="70.2299" y2="90.4407"
+                                                    gradientUnits="userSpaceOnUse">
+                                                    <stop stop-color="#A31523" />
+                                                    <stop offset="1" stop-color="#F04152" stop-opacity="0" />
+                                                </linearGradient>
+                                                <linearGradient id="paint3_linear" x1="51.1568" y1="57.4052" x2="70.2299" y2="90.4407"
+                                                    gradientUnits="userSpaceOnUse">
+                                                    <stop stop-color="#27539F" />
+                                                    <stop offset="1" stop-color="#71A1F4" stop-opacity="0" />
+                                                </linearGradient>
+                                            </defs>
+                                        </svg>
+                                    </div>
+                                    <h1>Luxury</h1>
+                                    <p style="margin-bottom: 3px;">This tier includes the following services:</p>
+                                    <ul style="text-align: left; list-style-position: inside; height:37vh; padding-left:2%;">
+                                        <li><b> All in Gold</b></li>
+                                        @foreach(explode(',',$inclu) as $inclusionl)
+                                        @if($inclusionl != null)
+                                        <li><b> {{ $inclusionl }}</b></li>
+                                        @endif
+                                        @endforeach
+                                    </ul>
+                                </button>
+                                
+                            </div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        </div>
                     </div>
-                    <h3 style="color: black;">Silver</h3>
-                    <p style="color: black;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum, id.</p>
-                </a>
+                </div>
+                </div>
             </div>
 
-            <div class="boxs">
-                <a href="">
-                    <div class="badges">
-                        <center>
-                        <div class="animated_badge animated_badge_5 hide">
-                            <div class="animated_stars">
-                                <div class="animated_star plus"></div>
-                                <div class="animated_star donut yellow"></div>
-                                <div class="animated_star plus"></div>
-                                <div class="animated_star donut"></div>
-                                <div class="animated_star plus yellow"></div>
-                            </div>
-                            <svg class="animated_badge_svg" width="84" height="99" viewBox="0 0 84 99" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path class="badge_ribbon"
-                                    d="M0.761166 82.9447L17.3041 50.8886C17.5574 50.3979 18.1606 50.2053 18.6513 50.4586L43.875 63.4756C44.3658 63.7289 44.5583 64.332 44.305 64.8228L27.7788 96.8466C27.4294 97.5236 26.4817 97.5769 26.0586 96.9435L17.8756 84.694C17.6881 84.4133 17.3716 84.2461 17.0341 84.2495L1.65981 84.4033C0.906487 84.4108 0.415676 83.6142 0.761166 82.9447Z"
-                                    fill="#F04152" />
-                                <path class="badge_ribbon"
-                                    d="M0.761166 82.9447L17.3041 50.8886C17.5574 50.3979 18.1606 50.2053 18.6513 50.4586L43.875 63.4756C44.3658 63.7289 44.5583 64.332 44.305 64.8228L27.7788 96.8466C27.4294 97.5236 26.4817 97.5769 26.0586 96.9435L17.8756 84.694C17.6881 84.4133 17.3716 84.2461 17.0341 84.2495L1.65981 84.4033C0.906487 84.4108 0.415676 83.6142 0.761166 82.9447Z"
-                                    fill="url(#paint0_linear)" />
-                                <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="1" y="50" width="44" height="46">
-                                    <path
-                                        d="M3.80623 77.0441L15.4697 54.4432C16.7361 51.9893 19.752 51.0266 22.2059 52.293L40.3204 61.6412C42.7743 62.9076 43.737 65.9235 42.4707 68.3774L30.8904 90.817C29.1437 94.2016 24.4052 94.4685 22.2895 91.3014L19.0777 86.4935C18.1402 85.09 16.5578 84.2543 14.8701 84.2712L8.29946 84.3369C4.53283 84.3745 2.07879 80.3915 3.80623 77.0441Z"
-                                        fill="#71A1F4" />
-                                    <path
-                                        d="M3.80623 77.0441L15.4697 54.4432C16.7361 51.9893 19.752 51.0266 22.2059 52.293L40.3204 61.6412C42.7743 62.9076 43.737 65.9235 42.4707 68.3774L30.8904 90.817C29.1437 94.2016 24.4052 94.4685 22.2895 91.3014L19.0777 86.4935C18.1402 85.09 16.5578 84.2543 14.8701 84.2712L8.29946 84.3369C4.53283 84.3745 2.07879 80.3915 3.80623 77.0441Z"
-                                        fill="url(#paint1_linear)" />
-                                </mask>
-                                <g class="badge_ribbon" mask="url(#mask0)">
-                                    <rect width="9.73445" height="46.9502" transform="matrix(0.894023 0.448022 -0.445194 0.895434 24.272 60.4499)"
-                                        fill="#FCD977" />
-                                </g>
-                                <path class="badge_ribbon right"
-                                    d="M56.5365 97.1074L38.5 65.8673C38.2239 65.389 38.3877 64.7774 38.866 64.5013L63.4476 50.3091C63.9259 50.0329 64.5375 50.1968 64.8137 50.6751L82.832 81.8838C83.2129 82.5435 82.7458 83.3698 81.9841 83.3836L67.2552 83.6511C66.9177 83.6572 66.6061 83.8332 66.4266 84.1191L58.2494 97.1392C57.8487 97.7772 56.9132 97.7598 56.5365 97.1074Z"
-                                    fill="#F04152" />
-                                <path class="badge_ribbon right"
-                                    d="M56.5365 97.1074L38.5 65.8673C38.2239 65.389 38.3877 64.7774 38.866 64.5013L63.4476 50.3091C63.9259 50.0329 64.5375 50.1968 64.8137 50.6751L82.832 81.8838C83.2129 82.5435 82.7458 83.3698 81.9841 83.3836L67.2552 83.6511C66.9177 83.6572 66.6061 83.8332 66.4266 84.1191L58.2494 97.1392C57.8487 97.7772 56.9132 97.7598 56.5365 97.1074Z"
-                                    fill="url(#paint2_linear)" />
-                                <mask id="mask1" mask-type="alpha" maskUnits="userSpaceOnUse" x="38" y="49" width="45" height="47">
-                                    <path
-                                        d="M53.2165 91.357L40.5 69.3314C39.1193 66.9399 39.9387 63.882 42.3301 62.5013L59.9835 52.3091C62.375 50.9283 65.4329 51.7477 66.8137 54.1392L79.4394 76.0076C81.3438 79.3061 79.0082 83.4376 75.2001 83.5068L69.419 83.6118C67.7314 83.6424 66.1732 84.5224 65.2756 85.9517L61.7808 91.5162C59.7774 94.7061 55.0999 94.6192 53.2165 91.357Z"
-                                        fill="#71A1F4" />
-                                    <path
-                                        d="M53.2165 91.357L40.5 69.3314C39.1193 66.9399 39.9387 63.882 42.3301 62.5013L59.9835 52.3091C62.375 50.9283 65.4329 51.7477 66.8137 54.1392L79.4394 76.0076C81.3438 79.3061 79.0082 83.4376 75.2001 83.5068L69.419 83.6118C67.7314 83.6424 66.1732 84.5224 65.2756 85.9517L61.7808 91.5162C59.7774 94.7061 55.0999 94.6192 53.2165 91.357Z"
-                                        fill="url(#paint3_linear)" />
-                                </mask>
-                                <g class="badge_ribbon right" mask="url(#mask1)">
-                                    <rect width="9.73445" height="46.9502" transform="matrix(0.860033 -0.510239 0.512954 0.858416 50.3103 65.1699)"
-                                        fill="#FCD977" />
-                                </g>
-                                <circle cx="39.5" cy="37.5" r="33.5" fill="#DBDFE7" stroke="#8C62F5" stroke-width="8" />
-                                <circle class="badge_circle" cx="39.5" cy="37.5" r="29.5" fill="#8C62F5" stroke="#D1C0FB" stroke-width="4" />
-                                {{-- <path class="badge_number"
-                                d="M43.16 39.98H41.28V30.7H39.04C39 30.76 37.64 32.78 36.82 33.96L32.54 40.12V42.08H39.02V45H41.28V42.08H43.16V39.98ZM39.06 33.9C39.04 34.58 39.02 35.68 39.02 36.46V39.98H35.02C35.02 39.98 35.84 38.76 36.52 37.78L37.46 36.4C38.1 35.46 38.86 34.16 39.02 33.9H39.06Z"
-                                fill="#FFA826" /> --}}
-                                <path class="badge_number"
-                                d="M43.16 39.98H41.28V30.7H39.04C39 30.76 37.64 32.78 36.82 33.96L32.54 40.12V42.08H39.02V45H41.28V42.08H43.16V39.98ZM39.06 33.9C39.04 34.58 39.02 35.68 39.02 36.46V39.98H35.02C35.02 39.98 35.84 38.76 36.52 37.78L37.46 36.4C38.1 35.46 38.86 34.16 39.02 33.9H39.06Z"
-                                fill="#E3D9FC" /> -->
-                                <defs>
-                                    <linearGradient id="paint0_linear" x1="31.2632" y1="56.9671" x2="13.7695" y2="90.8654"
-                                        gradientUnits="userSpaceOnUse">
-                                        <stop stop-color="#A31523" />
-                                        <stop offset="1" stop-color="#F04152" stop-opacity="0" />
-                                    </linearGradient>
-                                    <linearGradient id="paint1_linear" x1="31.2632" y1="56.9671" x2="13.7695" y2="90.8654"
-                                        gradientUnits="userSpaceOnUse">
-                                        <stop stop-color="#27539F" />
-                                        <stop offset="1" stop-color="#71A1F4" stop-opacity="0" />
-                                    </linearGradient>
-                                    <linearGradient id="paint2_linear" x1="51.1568" y1="57.4052" x2="70.2299" y2="90.4407"
-                                        gradientUnits="userSpaceOnUse">
-                                        <stop stop-color="#A31523" />
-                                        <stop offset="1" stop-color="#F04152" stop-opacity="0" />
-                                    </linearGradient>
-                                    <linearGradient id="paint3_linear" x1="51.1568" y1="57.4052" x2="70.2299" y2="90.4407"
-                                        gradientUnits="userSpaceOnUse">
-                                        <stop stop-color="#27539F" />
-                                        <stop offset="1" stop-color="#71A1F4" stop-opacity="0" />
-                                    </linearGradient>
-                                </defs>
-                            </svg>
-                        </div></center>
-                    </div>
-                    <h3 style="color: black;">Luxury</h3>
-                    <p style="color: black;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum, id.</p>
-                </a>
-            </div>
-    
         </div>
 
     </div>
     <h1 style="clear: both"></h1>
 </div>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+{{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script> --}}
 
     <script>
         const questions = document.querySelectorAll('.question-answer');

@@ -3,6 +3,7 @@
 @section('title','dashboard')
 
 @section('content')
+<link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 
 <div class="content  d-flex flex-column flex-column-fluid" id="kt_content">
     <!--begin::Subheader-->
@@ -31,7 +32,39 @@
     <div class="d-flex flex-column-fluid">
         <!--begin::Container-->
         <div class=" container ">
-            <p>Page content goes here...</p>
+            <table id="myTable" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Wisata</th>
+                        <th>Lokasi</th>
+                        <th>Hari</th>
+                        <th>Harga</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @php $i=1 @endphp
+                    @foreach ($wisata as $wisatas)
+                    
+                    <tr>
+                        <td>{{ $i++ }}</td>
+                        <td>{{ $wisatas->judul }}</td>
+                        <td>{{ $wisatas->lokasi}}</td>
+                        <td>{{ $wisatas->hari }} hari</td>
+                        <td>{{ $wisatas->harga_awal }}$.</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>No</th>
+                        <th>Wisata</th>
+                        <th>Lokasi</th>
+                        <th>Hari</th>
+                        <th>Salary</th>
+                    </tr>
+                </tfoot>
+            </table>
         </div>
         <!--end::Container-->
     </div>
@@ -41,5 +74,10 @@
 @endsection
 
 @push('script')
-
+<script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready( function () {
+        $('#myTable').DataTable();
+    } );
+</script>
 @endpush
