@@ -26,12 +26,13 @@ if (file_exists(app_path('Http/Controllers/LocalizationController.php')))
 Route::get('/', function () {
     return view('index');
 });
+//header
 
 // wisata route
 Route::get('/wisata',[WisataController::class, 'index'])->name('user.wisata');
 Route::get('/show/{judul}',[WisataController::class, 'detail']);
 // add 
-Route::view('/show', 'wisata.showbaru');
+// Route::view('/show', 'wisata.showbaru');
 Route::view('/cart', 'wisata.cart');
 Route::view('/payment', 'wisata.payment');
 Route::view('/confirmation', 'wisata.confirmation');
