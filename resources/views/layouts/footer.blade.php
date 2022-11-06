@@ -59,7 +59,7 @@
                             <li><a href="#"><i class="icon-vimeo"></i></a></li>
                             <li><a href="#"><i class="icon-youtube-play"></i></a></li>
                         </ul>
-                        <p>© Citytours 2022</p>
+                        <p>© Growintravel 2022</p>
                     </div>
                 </div>
             </div><!-- End row -->

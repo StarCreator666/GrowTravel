@@ -50,7 +50,7 @@
                                      data-lineheight="['28','14','23','20']"
                                      data-letterspacing="['0.5','0.5','0.5','0.5']"
                                      data-responsive="off"
-                                     data-responsive_offset="on" style="color: #fff;">Top rated tours, hotels and restaurants.
+                                     data-responsive_offset="on" style="color: #fff;">Top rated tours, hotels and cars.
                                 </div> 
 
                                 <!-- btn layer -->
@@ -110,7 +110,7 @@
                                      data-lineheight="['28','14','23','20']"
                                      data-letterspacing="['0.5','0.5','0.5','0.5']"
                                      data-responsive="off"
-                                     data-responsive_offset="on" style="color: #fff;">Top rated tours, hotels and restaurants.
+                                     data-responsive_offset="on" style="color: #fff;">Top rated tours, hotels and cars.
                                  </div> 
 
                                 <!-- btn layer -->
@@ -170,7 +170,7 @@
                                      data-lineheight="['28','14','23','20']"
                                      data-letterspacing="['0.5','0.5','0.5','0.5']"
                                      data-responsive="off"
-                                     data-responsive_offset="on" style="color: #fff;">Top rated tours, hotels and restaurants.
+                                     data-responsive_offset="on" style="color: #fff;">Top rated tours, hotels and cars.
                                  </div> 
 
                                 <!-- btn layer -->
@@ -220,7 +220,7 @@
                             <a href="all_hotels_list.html">
                                 <img src="img/img_cat_home_3.jpg" alt="" class="img-fluid">
                                 <div class="wrapper">
-                                    <h2>Hotels</h2>
+                                    <h2>Travel</h2>
                                     <p>650 Locations</p>
                                 </div>
                             </a>
@@ -229,7 +229,7 @@
                             <a href="all_restaurants_list.html">
                                 <img src="img/img_cat_home_4.jpg" alt="" class="img-fluid">
                                 <div class="wrapper">
-                                    <h2>Restaurants</h2>
+                                    <h2>Rent car</h2>
                                     <p>1132 Locations</p>
                                 </div>
                             </a>
@@ -246,7 +246,7 @@
 		<div class="container margin_60">
 
 			<div class="main_title">
-				<h2>Paris <span>Top</span> Tours</h2>
+				<h2>Indonesia <span>Top</span> Tours</h2>
 				<p>Quisque at tortor a libero posuere laoreet vitae sed arcu. Curabitur consequat.</p>
 			</div>
 
@@ -393,7 +393,7 @@
 			<hr class="mt-5 mb-5">
 
 			<div class="main_title">
-				<h2>Paris <span>Top</span> Hotels</h2>
+				<h2>Indonesian <span>Top</span> Hotels</h2>
 				<p>Quisque at tortor a libero posuere laoreet vitae sed arcu. Curabitur consequat.</p>
 			</div>
 

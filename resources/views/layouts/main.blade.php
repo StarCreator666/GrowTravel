@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Citytours - Premium site template for city tours agencies, transfers and tickets.">
     <meta name="author" content="Ansonika">
-    <title>CITY TOURS - City tours and travel site template by Ansonika</title>
+    <title>GrowIn Travel</title>
 
     <!-- Favicons-->
     <link rel="shortcut icon" href="{{asset('images/logo-wp.png')}}" />
@@ -17,9 +17,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&amp;family=Montserrat:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
 
     <!-- COMMON CSS -->
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-	<link href="css/vendors.css" rel="stylesheet">
+	<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/vendors.css') }}" rel="stylesheet">
+
+    	<!-- SPECIFIC CSS -->
+	<link href="{{ asset('css/shop.css') }}" rel="stylesheet">
 
     <!-- REVOLUTION SLIDER CSS -->
     <link rel="stylesheet" type="text/css" href="{{asset('rev-slider-files/fonts/font-awesome/css/font-awesome.css')}}">
@@ -131,12 +134,12 @@
     @stack('script')
 
     <!-- Common scripts -->
-    <script src="js/jquery-3.6.0.min.js"></script>
-    <script src="js/common_scripts_min.js"></script>
-    <script src="js/functions.js"></script>
+    <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('js/common_scripts_min.js') }}"></script>
+    <script src="{{ asset('js/functions.js') }}"></script>
 
     <!-- Gallery -->
-	<script src="js/jquery.sliderPro.min.js"></script>
+	<script src="{{ asset('js/jquery.sliderPro.min.js') }}"></script>
 	<script type="text/javascript">
 		$(document).ready(function ($) {
 			$('#Img_carousel').sliderPro({
@@ -181,7 +184,7 @@
     </script>
 
 	<!--Review modal validation -->
-	<script src="assets/validate.js"></script>
+	<script src="{{ asset('assets/validate.js') }}"></script>
 
 	<!-- Map -->
 	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAUQKuq-IHkzCt4VoGq2z4XYJ_ip7ZRkws"></script>
@@ -189,7 +192,7 @@
 	<script src="js/infobox.js"></script>
 
 	<!-- Fixed sidebar -->
-	<script src="js/theia-sticky-sidebar.js"></script>
+	<script src="{{ asset('js/theia-sticky-sidebar.js') }}"></script>
 	<script>
 		jQuery('#sidebar').theiaStickySidebar({
 			additionalMarginTop: 80
@@ -197,17 +200,17 @@
 	</script>
 
     <!-- SLIDER REVOLUTION SCRIPTS  -->
-    <script src="rev-slider-files/js/jquery.themepunch.tools.min.js"></script>
-    <script src="rev-slider-files/js/jquery.themepunch.revolution.min.js"></script>
-    <script src="rev-slider-files/js/extensions/revolution.extension.actions.min.js"></script>
-    <script src="rev-slider-files/js/extensions/revolution.extension.carousel.min.js"></script>
-    <script src="rev-slider-files/js/extensions/revolution.extension.kenburn.min.js"></script>
-    <script src="rev-slider-files/js/extensions/revolution.extension.layeranimation.min.js"></script>
-    <script src="rev-slider-files/js/extensions/revolution.extension.migration.min.js"></script>
-    <script src="rev-slider-files/js/extensions/revolution.extension.navigation.min.js"></script>
-    <script src="rev-slider-files/js/extensions/revolution.extension.parallax.min.js"></script>
-    <script src="rev-slider-files/js/extensions/revolution.extension.slideanims.min.js"></script>
-    <script src="rev-slider-files/js/extensions/revolution.extension.video.min.js"></script>
+    <script src="{{ asset('rev-slider-files/js/jquery.themepunch.tools.min.js') }}"></script>
+    <script src="{{ asset('rev-slider-files/js/jquery.themepunch.revolution.min.js') }}"></script>
+    <script src="{{ asset('rev-slider-files/js/extensions/revolution.extension.actions.min.js') }}"></script>
+    <script src="{{ asset('rev-slider-files/js/extensions/revolution.extension.carousel.min.js') }}"></script>
+    <script src="{{ asset('rev-slider-files/js/extensions/revolution.extension.kenburn.min.js') }}"></script>
+    <script src="{{ asset('rev-slider-files/js/extensions/revolution.extension.layeranimation.min.js') }}"></script>
+    <script src="{{ asset('rev-slider-files/js/extensions/revolution.extension.migration.min.js') }}"></script>
+    <script src="{{ asset('rev-slider-files/js/extensions/revolution.extension.navigation.min.js') }}"></script>
+    <script src="{{ asset('rev-slider-files/js/extensions/revolution.extension.parallax.min.js') }}"></script>
+    <script src="{{ asset('rev-slider-files/js/extensions/revolution.extension.slideanims.min.js') }}"></script>
+    <script src="{{ asset('rev-slider-files/js/extensions/revolution.extension.video.min.js') }}"></script>
     <script>
     var tpj = jQuery;
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\{Wisata,Inclusion,Exclusion};
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\View;
 
 class WisataController extends Controller
 {
@@ -42,7 +43,7 @@ class WisataController extends Controller
     public function detail($judul){
         $wisata = Wisata::where('judul',$judul)->firstOrFail();
 
-        return view('wisata.show')->with(compact('wisata'));
+        return view('wisata.showbaru')->with(compact('wisata'));
     }
 
     public function detail2(){

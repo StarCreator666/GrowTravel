@@ -13,41 +13,26 @@
 
 					<div class="col-sm-6 col-7">
 						<ul id="top_links">
-							<li><a href="#sign-in-dialog" id="access_link">Sign in</a></li>
+							{{-- <li><a href="#sign-in-dialog" id="access_link">Sign in</a></li> --}}
+                            @if(Auth::user())
+                           <li>
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button style="background: none; border: none; color: white; font-weight: 600;">Log Out</button>
+                                </form>
+                           </li>
+                           @else
+                           <li><a href="{{ url('login') }}" ><i style="font-size: 14px;" class="icon-login-1"></i> Sign in</a></li>
+                           @endif
+                            
 							<li>
 								<div class="dropdown dropdown-mini">
 									<a href="#" data-bs-toggle="dropdown" id="lang_link">English</a>
 									<div class="dropdown-menu">
 										<ul id="lang_menu">
-											<li><a href="#0">Spanish</a>
+											<li><a href="#0">English</a>
 											</li>
-											<li><a href="#0">French</a>
-											</li>
-											<li><a href="#0">German</a>
-											</li>
-											<li><a href="#0">Italian</a>
-											</li>
-											<li><a href="#0">Japanese</a>
-											</li>
-										</ul>
-									</div>
-								</div>
-								<!-- End Dropdown access -->
-							</li>
-							<li>
-								<div class="dropdown dropdown-mini">
-									<a href="#" data-bs-toggle="dropdown" id="currency_link">Euro</a>
-									<div class="dropdown-menu">
-										<ul id="lang_menu">
-											<li><a href="#0">USD</a>
-											</li>
-											<li><a href="#0">GBP</a>
-											</li>
-											<li><a href="#0">EUR</a>
-											</li>
-											<li><a href="#0">CHF</a>
-											</li>
-											<li><a href="#0">BRL</a>
+											<li><a href="#0">Indonesian</a>
 											</li>
 										</ul>
 									</div>
@@ -84,62 +69,31 @@
                             <li class="submenu">
                                 <a href="javascript:void(0);" class="show-submenu">Tours <i class="icon-down-open-mini"></i></a>
                                 <ul>
-                                    <li><a href="all_tours_list.html">All tours list</a></li>
-                                    <li><a href="all_tours_grid.html">All tours grid</a></li>
-                                    <li><a href="all_tours_grid_masonry.html">All tours Sort Masonry</a></li>
-                                    <li><a href="all_tours_map_listing.html">All tours map listing</a></li>
-                                    <li><a href="single_tour.html">Single tour page</a></li>
-                                    <li><a href="single_tour_with_gallery.html">Single tour with gallery</a></li>
-                                    <li class="third-level"><a href="javascript:void(0);">Single tour fixed sidebar</a>
-                                        <ul>
-                                            <li><a href="single_tour_fixed_sidebar.html">Single tour fixed sidebar</a></li>
-                                            <li><a href="single_tour_with_gallery_fixed_sidebar.html">Single tour 2 Fixed Sidebar</a></li>
-                                            <li><a href="cart_fixed_sidebar.html">Cart Fixed Sidebar</a></li>
-                                            <li><a href="payment_fixed_sidebar.html">Payment Fixed Sidebar</a></li>
-                                            <li><a href="confirmation_fixed_sidebar.html">Confirmation Fixed Sidebar</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="single_tour_working_booking.html">Single tour working booking</a></li>
-                                    <li><a href="cart.html">Single tour cart</a></li>
-                                    <li><a href="payment.html">Single tour booking</a></li>
+                                    <li><a href="/wisata">All tours list</a></li>
+                                    <li><a href="wisata?lokasi=Malang">Tours Malang</a></li>
+                                    <li><a href="wisata?lokasi=Blitar">Tours Blitar</a></li>
+                                    <li><a href="wisata?lokasi=Surabaya">Tours Surabaya </a></li>
                                 </ul>
                             </li>
                              <li class="submenu">
                                 <a href="javascript:void(0);" class="show-submenu">Rent Car <i class="icon-down-open-mini"></i></a><ul>
-                                    <li><a href="all_hotels_list.html">All hotels list</a></li>
-                                    <li><a href="all_hotels_grid.html">All hotels grid</a></li>
-                                    <li><a href="all_hotels_grid_masonry.html">All hotels Sort Masonry</a></li>
-                                    <li><a href="all_hotels_map_listing.html">All hotels map listing</a></li>
-                                    <li><a href="single_hotel.html">Single hotel page</a></li>
-                                    <li><a href="single_hotel_working_booking.html">Single hotel working booking</a></li>
-                                    <li><a href="single_hotel_contact.html">Single hotel contact working</a></li>
-                                    <li><a href="cart_hotel.html">Cart hotel</a></li>
-                                    <li><a href="payment_hotel.html">Booking hotel</a></li>
-                                    <li><a href="confirmation_hotel.html">Confirmation hotel</a></li>
+                                    <li><a href="all_hotels_list.html">Rent Car</a></li>
+                                    <li><a href="all_hotels_grid.html">Rent Bus</a></li>
                                 </ul>
                             </li>
                             <li class="submenu">
                                 <a href="javascript:void(0);" class="show-submenu">Info Travel <i class="icon-down-open-mini"></i></a>
                                 <ul>
-                                    <li><a href="all_transfer_list.html">All transfers list</a></li>
-                                    <li><a href="all_transfer_grid.html">All transfers grid</a></li>
-                                    <li><a href="all_transfer_grid_masonry.html">All transfers Sort Masonry</a></li>
-                                    <li><a href="single_transfer.html">Single transfer page</a></li>
-                                    <li><a href="cart_transfer.html">Cart transfers</a></li>
-                                    <li><a href="payment_transfer.html">Booking transfers</a></li>
-                                    <li><a href="confirmation_transfer.html">Confirmation transfers</a></li>
+                                    <li><a href="all_transfer_list.html">All Travel</a></li>
+                                    <li><a href="all_transfer_grid.html">Travel Malang</a></li>
+                                    <li><a href="all_transfer_grid_masonry.html">Travel Surabaya</a></li>
                                 </ul>
                             </li>
                               <li class="submenu">
                                 <a href="javascript:void(0);" class="show-submenu">About Us <i class="icon-down-open-mini"></i></a>
                                 <ul>
-                                    <li><a href="all_restaurants_list.html">All restaurants list</a></li>
-                                    <li><a href="all_restaurants_grid.html">All restaurants grid</a></li>
-                                    <li><a href="all_restaurants_grid_masonry.html">All restaurants Sort Masonry</a></li>
-                                    <li><a href="all_restaurants_map_listing.html">All restaurants map listing</a></li>
-                                    <li><a href="single_restaurant.html">Single restaurant page</a></li>
-                                    <li><a href="payment_restaurant.html">Booking restaurant</a></li>
-                                    <li><a href="confirmation_restaurant.html">Confirmation restaurant</a></li>
+                                    <li><a href="all_restaurants_list.html">About</a></li>
+                                    <li><a href="confirmation_restaurant.html">Contact Us</a></li>
                                 </ul>
                             </li>
                         </ul>
